@@ -1,30 +1,28 @@
 <template>
   <div class="counter-warp">
     <p>home</p>
+  
   </div>
 </template>
 
 <script>
 // Use Vuex
 import store from './store'
-
 export default {
   computed: {
     count () {
       return store.state.count
     }
   },
+  components:{
+   
+  },
   methods: {
-    increment () {
-      store.commit('increment')
-    },
-    decrement () {
-      store.commit('decrement')
-    }
+    
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

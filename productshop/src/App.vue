@@ -32,6 +32,7 @@ export default {
 
 <style>
 .container {
+  width:100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -46,5 +47,9 @@ export default {
   -moz-transition: width 2s;
   -webkit-transition: width 2s;
   -o-transition: width 2s;
+}
+page{
+   width:100%;
+   height: 100%;
 }
 </style>
