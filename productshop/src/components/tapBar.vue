@@ -1,14 +1,14 @@
 <template>
   <div class="tapBar">
     <div class="active">今日推荐</div>
-    <div>纸尿裤</div>
-    <div>母婴专区</div>
-    <div>服装</div>
-    <div>家居</div>
-    <div>小家电</div>
-    <div>小家电</div>
-    <div>小家电</div>
-    <div>小家电</div>
+    <div @click="clickcut">纸尿裤</div>
+    <div @click="clickcut">母婴专区</div>
+    <div @click="clickcut">服装</div>
+    <div @click="clickcut">家居</div>
+    <div @click="clickcut">小家电</div>
+    <div @click="clickcut">小家电</div>
+    <div @click="clickcut">小家电</div>
+    <div @click="clickcut">小家电</div>
 
   </div>
 </template>
@@ -29,7 +29,16 @@ export default {
 
   },
   methods:{
-
+    clickcut(){
+      wx.navigateTo({
+        url: '/pages/particulars/main',
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    }
   },
   created(){
 
