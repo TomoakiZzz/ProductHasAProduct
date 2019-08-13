@@ -5,8 +5,8 @@ export function getHomeData(){
 }
 //首页tab
 export function getCategoryList(params){
-    console.log(params)
-    return request.post("/api/open/product/category/sub/1",{parentId:0})
+    // console.log(params)
+    return request.post("/api/open/product/category/sub/1",params)
 }
 //上拉加载的数据
 export function getBetterShopData(params){

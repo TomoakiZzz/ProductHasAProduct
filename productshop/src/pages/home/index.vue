@@ -5,7 +5,7 @@
         <img src="../../../static/images/搜索(1).svg" alt>搜索
       </div>
     </div>
-    <TapBar/>
+    <TapBar :topList="topTabList"/>
     <div class="banner-main">
       <swiper
         class="banner"
@@ -64,21 +64,28 @@
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[13].items"/>
     <HomeClassifyTitle/>
-    
+    <div class="betterShopList" v-if="betterShopList">
+      <BetterShopList v-for="item in betterShopList" :key="item.phcid" :Item="item.productVo"/>
+    </div>
+    <div
+      class="hintMsg"
+      v-if="betterShopList && betterShopList.length>=20"
+    >{{hasMore ? '上拉加载更多...' : '没有更多数据了'}}</div>
   </div>
 </template>
 <script>
-import TapBar from "../../components/tapBar";//分类tab
-import HomeClassifyTitle from "../../components/homeClassifyTitle"//精选标题
-import HomeChoiceness from "../../components/homeChoiceness"//精选内容
-import BetterShopList from "../../components/betterShopList"//betterScroll商品列表
-import { mapActions, mapState } from "vuex";
+import TapBar from "../../components/tapBar"; //分类tab
+import HomeClassifyTitle from "../../components/homeClassifyTitle"; //精选标题
+import HomeChoiceness from "../../components/homeChoiceness"; //精选内容
+import BetterShopList from "../../components/betterShopList"; //betterScroll商品列表
+import { mapActions, mapState, mapMutations } from "vuex";
 export default {
   props: {},
   components: {
     TapBar,
     HomeClassifyTitle,
-    HomeChoiceness
+    HomeChoiceness,
+    BetterShopList
   },
   data() {
     return {
@@ -92,16 +99,41 @@ export default {
   },
   computed: {
     ...mapState({
-      homeListData: state => state.home.homeListData
+      homeListData: state => state.home.homeListData,
+      betterShopList: state => state.home.betterShopList,
+      hasMore: state => state.home.hasMore,
+      pageIndex: state => state.home.pageIndex,
+      pageSize: state => state.home.pageSize,
+      topTabList: state => state.home.topTabList
     })
   },
   methods: {
     ...mapActions({
-      getHomeListData: "home/getHomeListData"
+      getHomeListData: "home/getHomeListData",
+      getBetterShopList: "home/getBetterShopList",
+      getCategoryListData: "home/getCategoryListData"
+    }),
+    ...mapMutations({
+      updateLocation: "home/updateLocation"
     })
+  },
+  onReachBottom() {
+    console.log(this.hasMore);
+    if (this.hasMore) {
+      wx.showLoading({
+        title: "玩命加载中", //上拉的时候会出现一个提示框
+        success: async () => {
+          await this.updateLocation({ pageIndex: this.pageIndex + 1 });
+          await this.getBetterShopList();
+          wx.hideLoading();
+        }
+      });
+    }
   },
   onLoad() {
     this.getHomeListData();
+    this.getBetterShopList();
+    this.getCategoryListData();
   },
   mounted() {}
 };
@@ -220,5 +252,16 @@ export default {
       line-height: 40rpx;
     }
   }
+}
+.betterShopList {
+  width: 100%;
+}
+.hintMsg {
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #858585;
+  font-size: 28rpx;
 }
 </style>
