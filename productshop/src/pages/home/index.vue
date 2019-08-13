@@ -6,45 +6,57 @@
       </div>
     </div>
     <TapBar/>
-    <div class="swiper-container banner">
-      <div class="swiper-wrapper">
-        <div class="swiper-slider">
-       
+    <div class="banner-main">
+    <swiper class="banner" :autoplay="swiper.autoplay" :indicator-dots="swiper.indicatorDots" :circular="swiper.circular">
+        <swiper-item class="swiper-slider">
           <img
             src="https://jnup.oss-cn-beijing.aliyuncs.com/product/6cc984ed212a767473a0035a69fb230c.jpg"
             alt
           />
-        </div>
-        <div class="swiper-slider">
+        </swiper-item>
+        <swiper-item class="swiper-slider">
           <img
             src="https://jnup.oss-cn-beijing.aliyuncs.com/product/0e70ea98abbafa317be14dff67d17bfb.jpg"
             alt
           />
-        </div>
-        <div class="swiper-slider">
+        </swiper-item>
+        <swiper-item class="swiper-slider">
           <img
             src="https://jnup.oss-cn-beijing.aliyuncs.com/product/a9e77b18c775843d3d04ea67a0489f4a.jpg"
             alt
           />
-        </div>
-      </div>
-    </div>
+        </swiper-item>
+    </swiper>
+  </div>
   </div>
 </template>
 <script>
 import TapBar from "../../components/tapBar";
-import Swiper from "swiper";
+import {mapActions} from "vuex"
 export default {
   props: {},
   components: {
     TapBar
   },
   data() {
-    return {};
+    return {
+      swiper:{
+        autoplay:true,
+        interval:2000,
+        indicatorDots:true,
+        circular:true
+      }
+    };
   },
   computed: {},
-  methods: {},
-  created() {},
+  methods: {
+    ...mapActions({
+      getHomeListData:"home/getHomeListData"
+    })
+  },
+  onLoad(){
+    this.getHomeListData()
+  },
   mounted() {}
 };
 </script>
@@ -53,7 +65,7 @@ export default {
   width: 100%;
   height: 100%;
   .search {
-    padding: 0 20px;
+    padding: 0 20rpx;
     width: 100%;
     > div {
       background: #f6f6f6;
@@ -70,16 +82,25 @@ export default {
       }
     }
   }
-  .banner {
+  .banner-main {
     width: 100%;
     height: 39.5vw;
     padding: 0 10rpx;
     margin-top: 10rpx;
     box-sizing: border-box;
     margin-bottom: 20rpx;
-    > .swiper-slider {
+    .banner{
       width: 100%;
-      
+      height: 100%;
+      .swiper-slider{
+        width: 100%;
+        height: 100%;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+        border-radius: 6rpx;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <script>
-import "swiper/dist/css/swiper.min.css";
+
 export default {
   created () {
     // 调用API从本地缓存中获取数据
@@ -31,8 +31,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-html,body{
+<style>
+html,body,page{
   width: 100%;
   height: 100%;
 }
