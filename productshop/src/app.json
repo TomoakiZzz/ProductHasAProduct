@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/particulars/main",
     "pages/home/main",
     "pages/my/main",
     "pages/special/main",
-    "pages/topic/main",
-    "pages/spe/main"
+    "pages/topic/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

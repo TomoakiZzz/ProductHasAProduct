@@ -1,5 +1,8 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
@@ -18,10 +21,16 @@
 			"outputPath": ""
 		}
 	},
-	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
+	"libVersion": "2.7.7",
 	"appid": "wx3375420e2c184d34",
 	"projectname": "productshop",
+	"miniprogramRoot": "dist/wx/",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -38,16 +47,23 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "专题",
 					"pathName": "pages/special/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "首页",
+					"pathName": "pages/home/main",
+					"query": "",
 					"scene": null
 				}
 			]
