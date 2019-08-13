@@ -97,6 +97,7 @@
 // Use Vuex
 import store from "./store";
 import TapBar from "../../components/tapBar";
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
@@ -107,14 +108,27 @@ export default {
     TapBar
   },
   computed: {
-    count() {
-      return store.state.count;
-    }
+    ...mapState({
+      CategoryListData: state => state.page.CategoryListData,
+      classifyProductData: state => state.page.classifyProductData,
+      sortInterfaceData: state => state.page.sortInterfaceData
+    })
   },
   methods: {
-    changTab(index) {
+    ...mapActions({
+      getCategoryLists: "page/getCategoryLists",
+      classifyProducts: "page/classifyProducts",
+      sortInterfaces:"page/sortInterfaces"
+    }),
+     changTab(index) {
       this.tab = index;
     }
+  },
+  onLoad(options) {
+    console.log(options,"tab详情跳转后的options")
+    this.getCategoryLists();
+    this.classifyProducts();
+    this.sortInterfaces()
   }
 };
 </script>
