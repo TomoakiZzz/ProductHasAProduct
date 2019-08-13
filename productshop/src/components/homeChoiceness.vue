@@ -1,6 +1,13 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-13 19:57:53
+ * @LastEditTime: 2019-08-13 21:22:08
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
   <div class="choiceness">
-    <div class="choicenessItem" v-for="item in choicenessList" :key="item.title">
+    <div class="choicenessItem" v-for="item in choicenessList" :key="item.title" @click="goToDetail(item)">
       <div class="choicenessImg">
         <img :src="item.imgUrl" alt>
       </div>
@@ -21,7 +28,13 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    goToDetail(item){
+      let id=item.jumpUrl.split("product")[1].split("&")[1].split("=")[1]
+      //跳转详情
+      wx.navigateTo({url:`/pages/goodsDetail/main?id=`+id})
+    }
+  },
   created() {},
   mounted() {}
 };
