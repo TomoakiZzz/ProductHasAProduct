@@ -30,9 +30,16 @@ export default {
       });
     }
   },
-  created() {},
-  mounted() {}
-};
+  onLoad(options){
+    console.log(options)
+  },
+  created(){
+
+  },
+  mounted(){
+
+  }
+}
 </script>
 <style scoped lang="scss">
 .tapBar {
