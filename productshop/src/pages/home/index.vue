@@ -41,15 +41,44 @@
     <div class="banImg">
       <img :src="homeListData[4].pictUrl">
     </div>
+    <HomeClassifyTitle/>
+    <HomeChoiceness :choicenessList="homeListData[5].items"/>
+    <div class="banImg">
+      <img :src="homeListData[6].pictUrl">
+    </div>
+    <HomeClassifyTitle/>
+    <HomeChoiceness :choicenessList="homeListData[7].items"/>
+    <div class="banImg">
+      <img :src="homeListData[8].pictUrl">
+    </div>
+    <HomeClassifyTitle/>
+    <HomeChoiceness :choicenessList="homeListData[9].items"/>
+    <div class="banImg">
+      <img :src="homeListData[10].pictUrl">
+    </div>
+    <HomeClassifyTitle/>
+    <HomeChoiceness :choicenessList="homeListData[11].items"/>
+    <div class="banImg">
+      <img :src="homeListData[12].pictUrl">
+    </div>
+    <HomeClassifyTitle/>
+    <HomeChoiceness :choicenessList="homeListData[13].items"/>
+    <HomeClassifyTitle/>
+    
   </div>
 </template>
 <script>
-import TapBar from "../../components/tapBar";
+import TapBar from "../../components/tapBar";//分类tab
+import HomeClassifyTitle from "../../components/homeClassifyTitle"//精选标题
+import HomeChoiceness from "../../components/homeChoiceness"//精选内容
+import BetterShopList from "../../components/betterShopList"//betterScroll商品列表
 import { mapActions, mapState } from "vuex";
 export default {
   props: {},
   components: {
-    TapBar
+    TapBar,
+    HomeClassifyTitle,
+    HomeChoiceness
   },
   data() {
     return {
