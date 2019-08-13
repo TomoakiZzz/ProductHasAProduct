@@ -30,23 +30,19 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  width:100%;
+<style lang="scss" scoped>
+html,body{
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
+}
+div,p,ul,li,ol,p,span,b,i{
   box-sizing: border-box;
+  list-style: none;
 }
 /* this rule will be remove */
 * {
-  transition: width 2s;
-  -moz-transition: width 2s;
-  -webkit-transition: width 2s;
-  -o-transition: width 2s;
+  margin: 0;
+  padding: 0;
 }
 page{
    width:100%;

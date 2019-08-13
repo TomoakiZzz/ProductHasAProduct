@@ -1,9 +1,12 @@
 {
-  "pages": [
-    "pages/particulars/main",
-    "pages/home/main",
+  "pages": [ 
+    "pages/topic/main",
+
     "pages/my/main",
-    "pages/topic/main"
+    "pages/particulars/main",
+    "pages/home/main"
+    
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
