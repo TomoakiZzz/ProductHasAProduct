@@ -36,9 +36,10 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "首页",
-					"pathName": "pages/home/main",
+					"pathName": "pages/topic/main",
+					"query": "",
 					"scene": null
 				}
 			]

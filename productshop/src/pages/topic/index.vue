@@ -1,134 +1,112 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-13 19:22:18
+ * @LastEditTime: 2019-08-14 00:45:09
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
-  <div class="topic-warp">
-    <div class="topicTop">
-      <span>
-        <input type="radio" />
-      </span>
-      <p>
-        <img src="../../../static/images/tuikuan.svg" alt class="topic_img" />
-      </p>
-      <b>
-        <p>帮宝适绿帮纸尿裤大号L2132323</p>
-        <p>规格:Xl</p>
-        <p>
-          <em>￥52.50</em>
-          <strong>
-            <span>-</span>
-            <span>0</span>
-            <span>+</span>
-          </strong>
-        </p>
-      </b>
+  <div class="shopcart_wrap">
+    <!-- 购物车内容-->
+    <div class="shopCart_content">
+      <cartItem></cartItem>
+      
     </div>
-    <div class="topicBottom">
-      <span>
-        <input type="radio" />全选
-      </span>
-      <p>
-        总计:
-        <b>￥198.8</b>
-      </p>
-      <button class="btn1">编辑</button>
-      <button class="btn2">去结算</button>
+    <!-- 按钮-->
+    <div class="shopCart_btnWrap">
+      <div class="sum">
+        <p><span class="check"></span>全选</p>
+        <p>总计：<span>￥198</span></p>
+      </div>
+      <div class="button">
+        <button class="edit">编辑</button>
+        <button class="pay">去结算</button>
+      </div>
     </div>
   </div>
 </template>
-
 <script>
-// Use Vuex
-import store from "./store";
-
+import cartItem from "../../components/cartItem"
 export default {
-  computed: {
-    count() {
-      return store.state.count;
+  props:{
+
+  },
+  components:{
+    cartItem
+
+  },
+  data(){
+    return {
+
     }
   },
-  methods: {
-    increment() {
-      store.commit("increment");
-    },
-    decrement() {
-      store.commit("decrement");
-    }
-  }
-};
-</script>
+  computed:{
 
-<style lang="scss" scoped>
-.topic-warp {
-  width: 100%;
-  height: 100%;
-  background: #ccc;
-  .topicTop {
-    width: 95%;
-    height: 200rpx;
-    background: #fff;
-    margin: 20rpx 20rpx;
-    display: flex;
-    span {
-      flex: 1;
-      input {
-        margin-top: 60rpx;
-      }
-    }
-    p {
-      flex: 3;
-    }
-    b {
-      flex: 6;
-      p {
-        :nth-child(2) {
-          width: 150rpx;
-          height: 50rpx;
-          border: 2rpx solid #ccc;
-          display: flex;
-          em {
-            flex: 2;
-          }
-          strong {
-            flex: 8;
-            span {
-              width: 20rpx;
-              display: block;
-              text-align: center;
-            }
-          }
-        }
-      }
-    }
-  }
-  .topicBottom {
-    height: 100rpx;
-    line-height: 100rpx;
-    width: 100%;
-    bottom: 0rpx;
-    display: flex;
-    position: fixed;
-    border-top: 2rpx solid #ccc;
-    span {
-      flex: 2;
-    }
-    p {
-      flex: 4;
-      display: flex;
-    }
-    .btn1 {
-      flex: 2;
-      background: #45dcd5;
-      color: #fff;
-      border: 1rpx solid #45dcd5;
-    }
-    .btn2 {
-      flex: 2;
-      background: #f9506d;
-      color: #fff;
-      border: 1rpx solid #f9506d;
-    }
+  },
+  methods:{
+
+  },
+  created(){
+
+  },
+  mounted(){
+
   }
 }
-.topic_img {
-  width: 140rpx;
-  height: 124rpx;
+</script>
+<style scoped lang="scss">
+.shopcart_wrap{
+  width:100%;
+  height:100%;
+  background: #f3f7f7;
+  display: flex;
+  flex-direction: column;
 }
+.shopCart_content{
+  flex: 1;
+  overflow: scroll;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.shopCart_btnWrap{
+  background: #fff;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+}
+.sum{
+  flex:1;
+  display: flex;
+  justify-content: space-between;
+  padding:0 20rpx;
+  .check{
+    display: inline-block;
+    width: 30rpx;
+    height:30rpx;
+    border-radius: 50%;
+    border: 1px solid #39d7e8;
+  }
+  .price{
+    color:#f9476f;
+  }
+}
+.button{
+  display:flex;
+}
+button{
+  width:180rpx;
+  height: 90rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: none;
+}
+.edit{
+  background: #3fd9dc;
+}
+.pay{
+  background: #f9476f;
+}
+
+
+
 </style>

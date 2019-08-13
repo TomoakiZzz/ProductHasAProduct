@@ -2,16 +2,15 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-12 21:06:43
- * @LastEditTime: 2019-08-13 19:34:06
+ * @LastEditTime: 2019-08-14 00:50:14
  * @LastEditors: Please set LastEditors
  -->
 <template>
-    <div class="goods_wrap">
+    <div class="goods_wrap" v-if="goodsItem">
         <div class="main">
-             <!-- 轮播图-->
+        <!-- 轮播图-->
         <div class="swiper_container">
             <img :src="goodsItem.mainImgUrl" alt="">
-
         </div>
         <!-- 商品详情-->
         <div class="goods_info">
@@ -31,13 +30,14 @@
                 <span>1</span>
             </div>
         </div>
+        <!-- 选择产品规格-->
         <div class="goods_standard">
             <div class="goods_standard_info">
                 <span>选择</span>
                 <div class="goods_standard_check">
                     <span>颜色</span><span>尺码</span>
                 </div>
-                <i></i>
+                <i @click="show(true)">&gt;</i>
             </div>
             <div class="goods_standard_info">
                 <span>领券</span>
@@ -59,64 +59,79 @@
                 </div>
             </div>
         </div>
+        <!-- 产品描述 图片式-->
         <div class="goods_des">
             <p v-for="item in detailImg" :key="item.pid">
                 <img :src="item.imgUrl" alt="" :style="{width:item.imgWidth?item.imgWidth+'rpx':'750rpx',height:item.imgHeight?item.imgHeight+'rpx':'478rpx'}">
             </p>
         </div>
         </div>
-        <div class="goods_footer">
+        <!-- 弹窗选择规格 加入购物车-->
+        <addCart v-if="isShow"></addCart>
+        <div class="goods_footer" v-if="!isShow">
             <button>分享赚{{goodsItem.earnMoney}}</button>
             <button>立即购买</button>
+        </div>
+        <div class="goods_footer" v-if="isShow">
+            <button>确定</button>
         </div>
     </div>
 </template>
 <script>
-import { mapActions, mapState } from "vuex"
+import { mapActions, mapState, mapMutations } from "vuex"
+import addCart from "../../components/addCart"
 
 export default {
     props:{
 
     },
     components:{
+        addCart
 
     },
     data(){
         return {
-
+            
         }
+    },
+    onLoad(options){
+        this.getDataFn({pid:Number(options.id)})   //获取详情
+        this.check({pid:Number(options.id)})   //
+        this.getDetailImg({pid:Number(options.id),userIdentity:2,basePid:Number(options.id)}) //详情图片
+
     },
     computed:{
         ...mapState({
             goodsItem: state => state.goods.goodsItem ,//商品详情
             detailImg: state => state.goods.detailImg ,//详情图片
             packageInfo: state => state.goods.packageInfo ,//提示信息
-            standardInfo: state => state.goods.standardInfo[0]//产品规格
-        })
+            standardInfo: state => state.goods.standardInfo[0],//产品规格
+            isShow: state => state.goods.isShow //弹窗显示
+        }),
+       
 
     },
     methods:{
         ...mapActions({
             getDataFn: "goods/getDataFn", //请求商品详情数据
             getDetailImg: 'goods/getDetailImg' ,//请求详情图片
-            getHint: 'goods/getHint',//快递提示消息
             check: 'goods/check',
-            getRelated: ' goods/getRelated'
+        }),
+        ...mapMutations({
+            show: "goods/updateModual"
+ 
         })
        
 
     },
     created(){
-       
 
 
     },
     mounted(){
-        this.getDataFn({pid:549}) 
-        this.getDetailImg({pid:157,userIdentity:2,basePid:157}) 
-        this.getHint({sstid:80})
-        this.check({pid:70503})
-        this.getRelated({pid:447,uid:23,bid:12937})
+        
+       
+        
     }
 }
 </script>

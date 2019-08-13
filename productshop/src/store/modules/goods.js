@@ -3,7 +3,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-08 21:21:26
- * @LastEditTime: 2019-08-13 19:41:46
+ * @LastEditTime: 2019-08-14 00:03:09
  * @LastEditors: Please set LastEditors
  */
 import { getGoodsData, detailPicture, hint, standard, related} from "../../service";
@@ -14,7 +14,8 @@ const state = {
   detailImg: [],
   packageInfo:'' ,//快递提示
   standardInfo: [],//产品规格
-  related: []//相关信息
+  related: [],//相关信息
+  isShow: false //显示规格弹窗
  
 };
 
@@ -22,6 +23,7 @@ const state = {
 const mutations = {
   updataGoods(state,payload){
     state.goodsItem = payload
+    console.log(state.goodsItem,'state.goodsItemstate.')
   },
   updataDetailImg(state,payload){
     state.detailImg=payload
@@ -31,7 +33,13 @@ const mutations = {
     state.packageInfo=payload
   },
   updateStandard(state,payload){
+      console.log(payload,'goodsItemstandardInfo')
     state.standardInfo=payload
+  },
+  //是否显示弹窗
+  updateModual(state,payload){
+    state.isShow=payload
+
   }
   
 };
@@ -42,7 +50,18 @@ const actions = {
     async getDataFn({commit}, payload){
         let data = await getGoodsData(payload) 
         if(data.res_code === 1){
-          commit("updataGoods",data.result)
+            commit("updataGoods",data.result)
+            let Hint = await hint({sstid:data.result.sstid})
+            if(Hint.res_code === 1){
+                commit("updateInfo",Hint.result)
+            }
+            let standard = await related({pid:data.result.pid,uid:data.result.uid,bid:data.result.bid}) 
+            console.log(standard,'startg')
+            
+            if(standard.res_code === 1){
+                commit("updateStandard",standard.result)
+            }
+         
         }
     },
     //获取详情图片
@@ -52,27 +71,13 @@ const actions = {
         commit("updataDetailImg",data.result)
       }
     },
-    //获取快递提示
-    async getHint({commit}, payload){
-      let data = await hint(payload) 
-      if(data.res_code === 1){
-        commit("updateInfo",data.result)
-      }
-    },
     async check({commit}, payload){
       let data = await standard(payload) 
       if(data.res_code === 1){
         commit("updateStandard",data.result)
       }
     },
-    //获取相关信息
-    async getRelated({commit}, payload){
-      let data = await related(payload) 
-      console.log(data,'kkkkkk')
-      // if(data.res_code === 1){
-      //   commit("updateRelated",data.result)
-      // }
-    },
+  
     
    
   
