@@ -83,9 +83,7 @@ export default {
 .myTop {
   width: 100%;
   height: 300rpx;
-  p{
-background: url("../../../static/images/logBg.png")no-repeat;
-  }
+  
   
   .myImgone {
     width: 100%;
