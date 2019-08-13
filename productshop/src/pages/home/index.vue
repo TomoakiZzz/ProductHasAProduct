@@ -1,6 +1,7 @@
 <template>
   <div class="counter-warp">
-    <p>home</p>
+    <p>home9090909090</p>
+    <button @click="clickdl">90099009090909</button>
   </div>
 </template>
 
@@ -20,6 +21,11 @@ export default {
     },
     decrement () {
       store.commit('decrement')
+    },
+    clickdl(){
+      wx.navigateTo({
+        url: "/pages/special/main"
+      });
     }
   }
 }

@@ -2,7 +2,9 @@
   "pages": [
     "pages/home/main",
     "pages/my/main",
-    "pages/topic/main"
+    "pages/special/main",
+    "pages/topic/main",
+    "pages/spe/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
