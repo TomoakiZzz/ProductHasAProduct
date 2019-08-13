@@ -34,6 +34,9 @@ export default {
 <style>
 html,body,page{
   width: 100%;
+}
+.container {
+  width:100%;
   height: 100%;
 }
 div,p,ul,li,ol,p,span,b,i{
@@ -45,4 +48,5 @@ div,p,ul,li,ol,p,span,b,i{
   margin: 0;
   padding: 0;
 }
+
 </style>
