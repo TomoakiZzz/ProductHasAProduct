@@ -35,18 +35,14 @@ export default {
 html,body,page{
   width: 100%;
 }
-.container {
-  width:100%;
-  height: 100%;
-}
 div,p,ul,li,ol,p,span,b,i{
   box-sizing: border-box;
   list-style: none;
 }
-/* this rule will be remove */
 * {
   margin: 0;
   padding: 0;
 }
+
 
 </style>

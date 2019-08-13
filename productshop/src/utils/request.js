@@ -2,9 +2,9 @@ var Fly = require("flyio/dist/npm/wx")
 const fly = new Fly;
 
 //定义公共headers
-// fly.config.headers={
-//   "content-type":"application/x-www-form-urlencoded"
-// }
+fly.config.headers={
+  "content-type":"application/x-www-form-urlencoded"
+}
 //设置超时
 fly.config.timeout = 10000;
 //设置请求基地址

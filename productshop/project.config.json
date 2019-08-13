@@ -50,6 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
+<<<<<<< HEAD
 			"current": 1,
 			"list": [
 				{
@@ -64,6 +65,14 @@
 					"name": "首页",
 					"pathName": "pages/home/main",
 					"query": "",
+=======
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/home/main",
+>>>>>>> 9df010ca41cf5d27ccaa94cc240a968f2223e5a6
 					"scene": null
 				}
 			]

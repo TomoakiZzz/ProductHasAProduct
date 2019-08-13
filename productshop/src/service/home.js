@@ -1,10 +1,17 @@
 import request from "../utils/request.js"
-export function getHomeData() {
+
+//首页数据
+export function getHomeData(){
     return request.post("/api/open/page/home/list/1.0.0")
 }
-export function getCategoryList(params) {
+//首页tab
+export function getCategoryList(params){
     console.log(params)
-    return request.post("/api/open/product/category/sub/1", { parentId: 0 })
+    return request.post("/api/open/product/category/sub/1",{parentId:0})
+}
+//上拉加载的数据
+export function getBetterShopData(params){
+    return request.post("/api/open/page/home/products/1.0.0",params)
 }
 
 //  获取专题数据
