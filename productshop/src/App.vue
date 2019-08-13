@@ -35,10 +35,6 @@ export default {
 html,body,page{
   width: 100%;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 47f41401242e5a6ea749ec86c59c68245ff589fa
 div,p,ul,li,ol,p,span,b,i{
   box-sizing: border-box;
   list-style: none;
@@ -47,9 +43,6 @@ div,p,ul,li,ol,p,span,b,i{
   margin: 0;
   padding: 0;
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 47f41401242e5a6ea749ec86c59c68245ff589fa
 </style>
