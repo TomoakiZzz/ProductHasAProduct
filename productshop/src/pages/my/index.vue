@@ -1,6 +1,11 @@
 <template>
-  <div class="counter-warp">
-    <p>my</p>
+  <div class="my-warp">
+    <div class="myTop">
+
+    </div>
+    <div class="myBottom">
+
+    </div>
   </div>
 </template>
 
@@ -25,6 +30,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.my-warp{
+  width:100%;
+  height:100%;
+}
+.myBottom{
+  width: 1590rpx;
+  height:500rpx;
+  background: #ccc;
 
+}
 </style>

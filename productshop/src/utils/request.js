@@ -13,8 +13,8 @@ fly.config.baseURL = "https://sign.jasonandjay.com"
 //添加请求拦截器
 fly.interceptors.request.use((request)=>{
   //给所有请求添加自定义header
-  if(store.state.user.openid){
-    request.headers["openid"]=store.state.user.openid;
+  if(store.state.user.TrackID){
+    request.headers["TrackID"]=store.state.user.TrackID;
   }
 
   //打印出请求体

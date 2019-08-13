@@ -1,6 +1,8 @@
 <template>
   <div class="particulars">
-    <div class="particularsTop"></div>
+    <div class="particularsTop">
+      <TapBar />
+    </div>
     <div class="particularsBottom">
       <div class="particulTop">
         <ul>
@@ -94,12 +96,15 @@
 <script>
 // Use Vuex
 import store from "./store";
-
+import TapBar from "../../components/tapBar";
 export default {
   data() {
     return {
       tab: 1
     };
+  },
+  components: {
+    TapBar
   },
   computed: {
     count() {
