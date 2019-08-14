@@ -8,3 +8,4 @@
 export * from "./home"
 export * from "./page"
 export * from "./goods"
+export * from "./search"

@@ -13,7 +13,7 @@ import CreateLogger from 'vuex/dist/logger';
 import home from './modules/home';
 import page from "./modules/page";
 import goods from "./modules/goods";
-
+import search from "./modules/search"
 Vue.use(Vuex);
 
 
@@ -21,7 +21,8 @@ export default new Vuex.Store({
   modules: {
     home,
     page,
-    goods
+    goods,
+    search
   },
   plugins: [CreateLogger()]
 })

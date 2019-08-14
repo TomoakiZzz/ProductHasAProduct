@@ -3,38 +3,134 @@
     <div class="search">
       <div class="searchInp">
         <img src="../../../static/images/搜索(1).svg" alt>
-        <input type="text" placeholder="搜索">
+        <input v-model="inpValue" type="text" placeholder="搜索" @confirm="searchShop">
       </div>
-      <div class="cancel">取消</div>
+      <div class="cancel" @tap="close">取消</div>
     </div>
-    <div class="history">
-      <span>历史搜索</span>
-      <span>
-        <img src="../../../static/images/删除.svg">
-      </span>
+    <div v-if="isShow" class="wrapContenter">
+      <div class="history">
+        <span>历史搜索</span>
+        <span @tap="closeHistory">
+          <img src="../../../static/images/删除.svg">
+        </span>
+      </div>
+      <div class="historyList">
+        <span v-for="item in searchList" :key="item" @tap="searchShoping(item)">{{item}}</span>
+      </div>
     </div>
-    <div class="historyList">
-      <span>衣服</span>
-      <span>衣服</span>
-      <span>衣服</span>
-      <span>衣服</span>
-      <span>衣服</span>
-      <span>衣服</span>
-      <span>衣服</span>
-      <span>衣服</span>
+    <div v-if="!isShow" class="wrapContenter">
+      <div class="shopSort">
+        <span v-for="(item,index) in sortList" 
+        :key="item" 
+        :class="{'active':index===ind}"
+        @tap="sortShopList(index)"
+        >{{item}}</span>
+        <span class="upOrDown"><img src="../../../static/images/sortShopUp.png" alt=""/></span>
+      </div>
+      <div class="shopListCon">
+        <div class="shopListItem" v-for="item in searchShopList" :key="item.pid">
+          <div class="shopPic">
+            <span>
+              <img :src="item.mainImgUrl" alt>
+            </span>
+          </div>
+          <div class="shopTitle">
+            <p>{{item.title}}</p>
+            <p>
+              <span class="shopPrice">
+                <b>￥</b>
+                <b>{{item.salesPrice}}</b>
+              </span>
+              <span class="shopBeforPrice">￥{{item.vipPrice}}</span>
+            </p>
+            <span class="shopMsg">NEW</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   props: {},
   components: {},
   data() {
-    return {};
+    return {
+      inpValue: "",
+      isShow: true,
+      searchList: [],
+      sortList: ["综合", "最新", "价格"],
+      ind: 0
+    };
   },
-  computed: {},
-  methods: {},
-  created() {},
+  computed: {
+    ...mapState({
+      searchShopList: state => state.search.searchShopList
+    })
+  },
+  methods: {
+    ...mapActions({
+      searchShopData: "search/searchShopData"
+    }),
+    searchShop(e) {
+      if (this.inpValue.trim()) {
+        this.isShow = false;
+        // this.searchShopData({
+        //   queryWord: this.inpValue.trim(),
+        //   queryType: 0,
+        //   querySort: "asc",
+        //   pageIndex: 1
+        // });
+        console.log(
+          this.searchList.findIndex(item => item == this.inpValue.trim())
+        );
+        if (
+          this.searchList.findIndex(item => item == this.inpValue.trim()) === -1
+        ) {
+          this.searchList.push(this.inpValue.trim());
+          wx.setStorage({
+            key: "history",
+            data: JSON.stringify(this.searchList)
+          });
+        }
+      } else {
+        this.isShow = true;
+      }
+      console.log(this.inpValue);
+    },
+    close() {
+      // console.log(123)
+      this.isShow = true;
+    },
+    closeHistory() {
+      wx.clearStorage();
+      this.searchList = [];
+    },
+    searchShoping(item) {
+      this.isShow = false;
+      this.searchShopData({
+        queryWord: item,
+        queryType: 0,
+        querySort: "asc",
+        pageIndex: 1
+      });
+    },
+    sortShopList(index){
+      console.log(123)
+      this.ind=index;
+      
+    }
+  },
+  onLoad() {
+    wx.getStorage({
+      key: "history",
+      success: res => {
+        // console.log(typeof res.data);
+        this.searchList = JSON.parse(res.data) || [];
+      }
+    });
+  },
   mounted() {}
 };
 </script>
@@ -60,14 +156,15 @@ export default {
       margin: 0 12rpx;
     }
     input {
-      cursor: auto;
-      display: block;
-      height: 1.4rem;
+      flex: 1;
+      // cursor: auto;
+      // display: block;
+      // height: 1.4rem;
       text-overflow: clip;
-      overflow: hidden;
+      // overflow: hidden;
       white-space: nowrap;
       font-family: UICTFontTextStyleBody;
-      min-height: 1.4rem;
+      // min-height: 1.4rem;
     }
   }
   .cancel {
@@ -92,21 +189,129 @@ export default {
   }
 }
 .historyList {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    padding-left:40rpx;
-    span{
-        padding: 10rpx 38rpx;
-        font-size: 28rpx;
-        font-family: PingFangSC-Regular;
-        color: #333;
-        background: #f5f5f4;
-        border-radius: 12rpx;
-        margin-bottom: 30rpx;
-        margin-right: 28rpx;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 40rpx;
+  span {
+    padding: 10rpx 38rpx;
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular;
+    color: #333;
+    background: #f5f5f4;
+    border-radius: 12rpx;
+    margin-bottom: 30rpx;
+    margin-right: 28rpx;
+  }
+}
 
+.shopListCon {
+  width: 100%;
+  background: #f3f7f7;
+  padding: 18rpx 10rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .shopListItem {
+    width: 363rpx;
+    height: 536rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8rpx;
+    position: relative;
+    .shopPic {
+      height: 400rpx;
+      padding: 60rpx 46rpx 30rpx 28rpx;
+      > span {
+        display: block;
+        width: 295rpx;
+        height: 277rpx;
+        > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
+    .shopTitle {
+      width: 100%;
+      flex: 1;
+      > p:first-of-type {
+        font-size: 24rpx;
+        padding-left: 10rpx;
+        color: #323a45;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      > p:last-of-type {
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        .shopPrice {
+          display: flex;
+          align-items: flex-end;
+          padding-left: 6rpx;
+          color: #fc5d7b;
+          b:first-of-type {
+            font-size: 28rpx;
+            font-weight: 400;
+          }
+          b:last-of-type {
+            font-size: 36rpx;
+            font-weight: 400;
+          }
+        }
+        .shopBeforPrice {
+          font-size: 22rpx;
+          color: #a87831;
+        }
+      }
+      .shopMsg {
+        display: block;
+        width: 50rpx;
+        height: 26rpx;
+        border-radius: 4rpx;
+        background: linear-gradient(270deg, #ffb848, #ff7737);
+        position: absolute;
+        top: 20rpx;
+        right: 20rpx;
+        color: #fff;
+        font-size: 18rpx;
+        text-align: center;
+        line-height: 26rpx;
+      }
+    }
+  }
+}
+.shopSort {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 26rpx;
+  position: relative;
+  .active {
+    color: red;
+  }
+  .upOrDown{
+    position: absolute;
+    top:50%;
+    right:60rpx;
+    transform: translateY(-50%);
+    width: 20rpx;
+    height: 40rpx;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.wrapContenter {
+  width: 100%;
 }
 </style>
