@@ -1,5 +1,5 @@
 <template>
-  <div class="tapBar">
+  <div class="tapBar" v-if="topList.length">
     <div :class="{'active':ind===index}" v-for="(item,index) in topList" :key="item.cname">{{item.cname}}</div>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
     }
   },
   onLoad(options){
-    console.log(options)
+    console.log(this.topList,"123123123")
   },
   created(){
 
@@ -43,7 +43,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .tapBar {
-  // width: 100%;
+  width: 100%;
   display: flex;
   white-space: nowrap;
   height: 100rpx;

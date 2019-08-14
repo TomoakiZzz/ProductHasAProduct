@@ -38,7 +38,7 @@
 				{
 					"id": 0,
 					"name": "首页",
-					"pathName": "pages/topic/main",
+					"pathName": "pages/home/main",
 					"query": "",
 					"scene": null
 				}
