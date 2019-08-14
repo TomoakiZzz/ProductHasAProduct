@@ -2,9 +2,9 @@ var Fly = require("flyio/dist/npm/wx")
 const fly = new Fly;
 
 //定义公共headers
-// fly.config.headers={
-//   "content-type":"application/x-www-form-urlencoded"
-// }
+fly.config.headers={
+  "content-type":"application/x-www-form-urlencoded"
+}
 //设置超时
 fly.config.timeout = 10000;
 //设置请求基地址
@@ -14,7 +14,7 @@ fly.config.baseURL = "https://upapi.jinaup.com"
 fly.interceptors.request.use((request)=>{
   //给所有请求添加自定义header
   // if(store.state.user.TrackID){
-    // request.headers["trackId"]="F649B34989975F2672F778DFE1F6CC7C0A012572F93A8D44E9E2E6A43B0D64EF5B753BD95E281A12FB6E2657CA3C322C8EDD48AD88C1D895AA882EE69AF51E209A101AD4A318BF41E54B13C189A368B3080D4CB37654208721AA2141D76141878B4F2F23C363A567319335B0AF520D12";
+    request.headers["trackId"]="F649B34989975F2672F778DFE1F6CC7C0A012572F93A8D44E9E2E6A43B0D64EF5B753BD95E281A12FB6E2657CA3C322C8EDD48AD88C1D895AA882EE69AF51E209A101AD4A318BF41E54B13C189A368B3080D4CB37654208721AA2141D76141878B4F2F23C363A567319335B0AF520D12";
   // }
   // request.headers["TrackID"]=
   //打印出请求体
