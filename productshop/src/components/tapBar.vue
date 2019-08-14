@@ -1,35 +1,32 @@
 <template>
   <div class="tapBar">
-    <div class="active">今日推荐</div>
-    <div>纸尿裤</div>
-
+    <div :class="{'active':ind===index}" v-for="(item,index) in topList" :key="item.cname">{{item.cname}}</div>
   </div>
 </template>
 <script>
 export default {
-  props:{
-
-  },
-  components:{
-
-  },
-  data(){
-    return {
-      topList:['今日推荐']
+  props: {
+    topList: {
+      type: Array
     }
   },
-  computed:{
+  components: {},
+  data() {
+    return {
+      ind:0
+
+    };
+  },
+  computed: {
 
   },
-  methods:{
-    clickcut(){
+  methods: {
+    clickcut() {
       wx.navigateTo({
-        url: '/pages/particulars/main',
-        success: (result)=>{
-          
-        },
-        fail: ()=>{},
-        complete: ()=>{}
+        url: "/pages/particulars/main",
+        success: result => {},
+        fail: () => {},
+        complete: () => {}
       });
     }
   },
@@ -45,35 +42,35 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.tapBar{
+.tapBar {
   // width: 100%;
   display: flex;
   white-space: nowrap;
   height: 100rpx;
   line-height: 100rpx;
   overflow: scroll;
-  &::-webkit-scrollbar {               // &在sass中就表示要修饰的父元素即.pics_wall
+  &::-webkit-scrollbar {
+    // &在sass中就表示要修饰的父元素即.pics_wall
     display: none;
   }
-  >div{
+  > div {
     padding: 0 22rpx;
     height: 100%;
     font-size: 28rpx;
   }
-  .active{
+  .active {
     font-weight: 600;
     position: relative;
-    &:after{
+    &:after {
       content: "";
       width: 36rpx;
       height: 6rpx;
-      background: #48CFBA;
+      background: #48cfba;
       position: absolute;
-      bottom:0;
-      left:50%;
-      transform: translateX(-50%)
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
-
 }
 </style>

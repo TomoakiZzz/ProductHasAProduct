@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-13 19:57:53
+ * @LastEditTime: 2019-08-13 20:54:39
+ * @LastEditors: Please set LastEditors
+ -->
 <script>
 
 export default {
@@ -32,8 +39,11 @@ export default {
 </script>
 
 <style>
+
 html,body,page{
   width: 100%;
+  height:100%;
+  
 }
 div,p,ul,li,ol,p,span,b,i{
   box-sizing: border-box;

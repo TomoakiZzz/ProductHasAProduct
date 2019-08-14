@@ -42,7 +42,7 @@ const actions = {
         commit("classifyProductData",data.result)
     }
 }
-export default{
+export default {
     namespaced: true,
     state,
     mutations,
