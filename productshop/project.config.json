@@ -37,8 +37,15 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "首页",
-					"pathName": "pages/topic/main",
+					"name": "pages/home/main",
+					"pathName": "pages/home/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/particulars/main",
+					"pathName": "pages/particulars/main",
 					"query": "",
 					"scene": null
 				}

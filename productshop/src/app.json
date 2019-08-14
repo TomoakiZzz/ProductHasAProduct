@@ -1,11 +1,11 @@
 {
   "pages": [ 
-    "pages/home/main",
+    
     "pages/particulars/main",
     "pages/topic/main",
     "pages/goodsDetail/main",
-    "pages/my/main"
-   
+    "pages/my/main",
+    "pages/home/main"
    
   ],
   "window": {
