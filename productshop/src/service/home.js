@@ -20,3 +20,11 @@ export function getSpecialData(params) {
     // https://upapi.jinaup.com/api/open/sepcial/query/1.0.0  siid: 223
     return request.post('/api/open/sepcial/query/1.0.0',params)
 }
+
+//  https://upapi.jinaup.com/api/open/micro/product/category/query/1.0.0  分类数据  parentId:0
+
+
+// pid: 161  id: 11719  uid: 23  usiid: 
+export function getDetail(params){
+    return request.post('/api/open/product/coupon/productCouponList/1.0.0',params);
+}
