@@ -31,7 +31,7 @@ export default {
     }
   },
   onLoad(options){
-    console.log(this.topList,"123123123")
+    // console.log(this.topList,"123123123")
   },
   created(){
 

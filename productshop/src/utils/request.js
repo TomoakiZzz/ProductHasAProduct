@@ -16,7 +16,7 @@ fly.interceptors.request.use((request)=>{
   // if(store.state.user.TrackID){
   //   request.headers["TrackID"]=store.state.user.TrackID;
   // }
-  // request.headers["TrackID"]=
+  request.headers["TrackID"]="F649B34989975F268EA5BC4927E7C2365DBB8293767D955992FF410009F6B2DE301BCDFBE166230EBF083C72B5B6A948277C0041980DAC5E46FA1EF475B12D4773F05A5E984CF1D814817C9546DF831BF9D9BD6C1F2231AFA450731B6837E7084E77DC9918A436BC"
   //打印出请求体
   console.log(request.body)
   //终止请求
