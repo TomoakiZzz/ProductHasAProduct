@@ -44,7 +44,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .tapBar {
-  // width: 100%;
+  width: 100%;
   display: flex;
   white-space: nowrap;
   height: 100rpx;

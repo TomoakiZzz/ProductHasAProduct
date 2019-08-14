@@ -1,7 +1,7 @@
 <template>
   <div class="wrap-init" v-if="homeListData && homeListData[0]">
     <div class="search">
-      <div>
+      <div @tap="goToSearch">
         <img src="../../../static/images/搜索(1).svg" alt>搜索
       </div>
     </div>
@@ -115,7 +115,12 @@ export default {
     }),
     ...mapMutations({
       updateLocation: "home/updateLocation"
-    })
+    }),
+    goToSearch(){
+      wx.navigateTo({
+        url: '/pages/search/main'
+      });
+    }
   },
   onReachBottom() {
     console.log(this.hasMore);

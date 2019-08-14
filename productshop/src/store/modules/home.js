@@ -49,7 +49,7 @@ const actions = {
     },
     async getCategoryListData({ commit, state }, payload) {
         let data = await getCategoryList({ parentId: state.parentId })
-        console.log(data)
+        // console.log(data)
         commit("updateTopTabList", data.result)
     },
     async getBetterShopList({ commit, state }, payload) {
