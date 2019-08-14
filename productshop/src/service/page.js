@@ -11,5 +11,6 @@ export function sortInterface(params){
 }
 //按分类查询商品
 export function classifyProduct(params){
-    return request.post("/api/open/product/category/productList/1.0.0",{params})
+    console.log(params,'444')
+    return request.post("/api/open/product/category/productList/1.0.0",params)
 }

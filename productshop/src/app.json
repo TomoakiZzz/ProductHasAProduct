@@ -1,12 +1,21 @@
 {
   "pages": [ 
+<<<<<<< HEAD
     "pages/home/main",
+=======
+    "pages/returnRequest/main",
+>>>>>>> a6a5f03bf1c0b37b334032f26a68331dc3241175
     "pages/particulars/main",
     "pages/topic/main",
     "pages/goodsDetail/main",
     "pages/my/main",
+<<<<<<< HEAD
     "pages/search/main"
 
+=======
+    "pages/home/main"
+   
+>>>>>>> a6a5f03bf1c0b37b334032f26a68331dc3241175
   ],
   "window": {
     "backgroundTextStyle": "light",
