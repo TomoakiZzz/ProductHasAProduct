@@ -25,20 +25,25 @@
     </div>
     <div class="particularsBottom">
       <div class="particulTop">
-        <ul>
-          <li :class="{'selected':tab === 1}" @click="changTab(1)">综合</li>
-          <li :class="{'selected':tab === 2}" @click="changTab(2)">最新</li>
-          <li :class="{'selected':tab === 3}" @click="changTab(3)">
-            价格
-            <div class="price" @sort="sort">
-              <span :class="[flag===true?'shangs':'shang']">△</span>
-              <span :class="[flag===false?'xias':'xia']">▽</span>
-            </div>
-          </li>
+        <ul class="priceList">
+          <li
+            v-for="(item,index) in list"
+            :key="index"
+            :class="[index===BotIndex?'active':'null']"
+            @click="changTab(index)"
+          >{{item}}</li>
+          <div class="price" @sort="sort">
+            <span>
+              <img
+                :src="BotIndex===2 && flag ? '../../../static/images/priceSortUp.png' : '../../../static/images/priceSortdown.png'"
+                alt
+              />
+            </span>
+          </div>
         </ul>
       </div>
       <div class="particulBottom">
-        <div class="bottomNrZh" v-if="tab===1">
+        <div class="bottomNr">
           <div class="nr" v-for="(ite,index) in classifyProductData" :key="index">
             <p class="nrTop">
               <img :src="ite.mainImgUrl" alt class="particulars_img" />
@@ -54,8 +59,6 @@
             </span>
           </div>
         </div>
-        <div class="bottomNrZx" v-else-if="tab===2">最新</div>
-        <div class="bottomNrjg" v-else>价格</div>
       </div>
     </div>
   </div>
@@ -65,12 +68,14 @@
 // Use Vuex
 import store from "./store";
 import TapBar from "../../components/tapBar";
-import { mapActions, mapState ,mapMutations} from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
       tab: 1,
       flag: true,
+      BotIndex: 0,
+      list: ["综合", "最新", "价格"]
     };
   },
   components: {
@@ -81,7 +86,7 @@ export default {
       CategoryListData: state => state.page.CategoryListData,
       classifyProductData: state => state.page.classifyProductData,
       sortInterfaceData: state => state.page.sortInterfaceData,
-      ind: state=>state.page.ind
+      ind: state => state.page.ind
     })
   },
   methods: {
@@ -91,11 +96,8 @@ export default {
       sortInterfaces: "page/sortInterfaces"
     }),
     ...mapMutations({
-      updateInd:"page/updateInd"
+      updateInd: "page/updateInd"
     }),
-    changTab(index) {
-      this.tab = index;
-    },
     sort() {
       this.flag = !this.flag;
       if (this.flag) {
@@ -112,52 +114,52 @@ export default {
         // });
       }
     },
-    handTopTab(index){
-      this.updateInd(index)
-      this.classifyProducts({ pageIndex: 1, cid: this.sortInterfaceData[index].cid, sortType: 1 });
+    handTopTab(index) {
+      this.updateInd(index);
+      this.classifyProducts({
+        pageIndex: 1,
+        cid: this.sortInterfaceData[index].cid,
+        sortType: 1
+      });
+    },
+    changTab(index) {
+      console.log(index);
+      this.BotIndex = index;
+      if(index===2){
+        this.flag = !this.flag
+      }
     }
   },
   onLoad(options) {
     console.log(options, "tab详情跳转后的options");
-    this.updateInd(options.index-1)
+    // this.updateInd(options.index - 1);
     this.getCategoryLists();
-    this.classifyProducts({ pageIndex: 1, cid: options.cid, sortType: 1 });
+    this.classifyProducts({ pageIndex: 1, cid: 1, sortType: 1 });
     this.sortInterfaces();
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.priceList {
+  position: relative;
+}
 .price {
   width: 50rpx;
   height: 100rpx;
-  background: rgb(223, 165, 49);
-  float: right;
-  margin-right: 30rpx;
-  position: relative;
-}
-.price .shang {
   position: absolute;
-  background: orange;
-  font-size: 40rpx;
+  right: 40rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  span {
+    img {
+      width: 100%;
+      height: 100%;
+      transform: scale(0.4);
+    }
+  }
 }
-.price .xia {
-  position: absolute;
-  font-size: 40rpx;
-  top: 15rpx;
-}
-.price .shangs {
-  position: absolute;
-  font-size: 40rpx;
-  top: -3rpx;
-  color: red;
-}
-.price .xias {
-  position: absolute;
-  font-size: 40rpx;
-  top: 15rpx;
-  color: red;
-}
+
 .header {
   height: 100rpx;
   overflow-x: auto;
@@ -176,6 +178,12 @@ export default {
   flex-shrink: 0;
   font-size: 32rpx;
   padding: 0 20rpx;
+}
+.bottomNr {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 .top {
   width: 100%;
@@ -202,6 +210,10 @@ export default {
   font-size: 24rpx;
 }
 .actives {
+  color: #56d2bf;
+  border-bottom: 3px solid #56d2bf;
+}
+.active {
   color: #56d2bf;
   border-bottom: 3px solid #56d2bf;
 }

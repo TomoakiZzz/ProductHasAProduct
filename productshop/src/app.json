@@ -1,6 +1,6 @@
 {
   "pages": [ 
-    
+    "pages/returnRequest/main",
     "pages/particulars/main",
     "pages/topic/main",
     "pages/goodsDetail/main",
