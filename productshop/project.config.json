@@ -42,7 +42,11 @@
 			"list": []
 		},
 		"miniprogram": {
+<<<<<<< HEAD
 			"current": 1,
+=======
+			"current": 4,
+>>>>>>> mengyali
 			"list": [
 				{
 					"id": 0,
@@ -55,6 +59,12 @@
 					"id": -1,
 					"name": "搜索",
 					"pathName": "pages/search/main",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "canvas",
+					"pathName": "pages/canvas/main",
 					"scene": null
 				}
 			]
