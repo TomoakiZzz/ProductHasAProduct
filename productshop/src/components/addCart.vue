@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-13 21:28:06
- * @LastEditTime: 2019-08-14 00:50:58
+ * @LastEditTime: 2019-08-15 18:43:37
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -11,27 +11,30 @@
             <div class="shopCart_main">
                 <div class="title">
                     <p>默认</p>
-                    <span @click="hide(false)">x</span>
+                    <span @click="close(false)">x</span>
                 </div>
                 <div class="info">
                     <img :src="goodsItem.mainImgUrl" alt="">
                     <div class="des">
-                        <p>￥{{goodsItem.salesPrice}}</p>
-                        <p>库存{{goodsItem.title}}</p>
+                        <p>￥{{Type.salesPrice}}</p>
+                        <p class="number">库存{{Type.store}}</p>
                     </div>
                 </div>
                 <div class="standard">
                     <p>{{standardInfo[0].aname}}</p>
-                    <div>
-                        <span v-for="item in standardInfo[0].attributeValueRelationVoList" :key="item.aid">{{item.vname}}</span>
-                    </div>
+                        <div>
+                            <span v-for="(item,index) in standardInfo[0].attributeValueRelationVoList" :key="item.aid"
+                            @click="check(index,item.vname)"
+                            :class="[ index===ind ? 'active' : '' ]"
+                            >{{item.vname}}</span>
+                        </div>
                 </div>
                 <div class="num_wrap">
                     <p>数量</p>
                     <div class="num">
-                        <span>-</span>
-                        <span>0</span>
-                        <span>+</span>
+                        <span @click="addCart('-')">-</span>
+                        <span>{{num}}</span>
+                        <span @click="addCart('+')">+</span>
                     </div>
                 </div> 
             </div>
@@ -39,7 +42,7 @@
     </div>
 </template>
 <script>
-import { mapState,mapMutations } from "vuex"
+import { mapState,mapMutations, mapActions } from "vuex"
 export default {
     props:{
 
@@ -49,25 +52,57 @@ export default {
     },
     data(){
         return {
+            ind: 0,
+            type: ''
 
         }
     },
     computed:{
         ...mapState({
-            standardInfo: state=>state.goods.standardInfo,
-            goodsItem: state=>state.goods.goodsItem,
+            standardInfo: state=>state.goods.standardInfo, //产品规格
+            goodsItem: state=>state.goods.goodsItem, //产品详情
+            num: state=>state.goods.num, //数量
+            Type: state=>state.goods.Type, //类型(数组)
         })
-
     },
-methods:{
-        ...mapMutations({
-            hide: "goods/updateModual"
-        })
-        
+    methods:{
+        ...mapActions({
+            changeType: "goods/changeType",
 
+        }),
+        ...mapMutations({
+            hide: "goods/updateModual",
+            addCartFn: 'goods/addCartFn',
+            clear: 'goods/clear', // 清除type
+            updateCheck: 'goods/updateCheck'//选择类型后更新类型
+        }),
+        //关闭弹框
+        close(flag){
+            this.hide(flag)
+            //默认第一个
+            if(this.standardInfo[0].attributeValueRelationVoList.length>1){
+                this.updateCheck(this.type)
+            }else{
+                this.updateCheck(this.standardInfo[0].attributeValueRelationVoList[0].vname)
+            }
+          
+        },
+        //切换样式
+        check(ind,type){
+            this.ind = ind
+            this.type = type
+            this.updateCheck(type)
+            this.changeType({pid: this.standardInfo[0].attributeValueRelationVoList[ind].pid,vids:`[${this.standardInfo[0].attributeValueRelationVoList[ind].vid}]`})
+        },
+        //添加购物车
+        addCart(type){
+            this.addCartFn({type:type, num:this.type.store})
+        }
+    },
+    onLoad(){
+        
     },
     created(){
-
     },
     mounted(){
 
@@ -120,13 +155,19 @@ methods:{
             display: flex;
             flex-wrap: wrap;
             span{
-                padding: 0 40rpx;
-                border: 1px solid #ccc;
+                padding: 0 30rpx;
+                border: .5px solid #ccc;
                 margin: 20rpx;
-                border-radius: 20rpx;
-
+                border-radius: 10rpx;
+            }
+            span.active{
+                color:#fff;
+                background: #33d6c5;
             }
         }
+    }
+    .number{
+        color:#abaeb2;
     }
     .num_wrap{
         width:100%;
@@ -137,8 +178,9 @@ methods:{
     .num{
         span{
             border:.5px solid #ccc;
-            padding: 20rpx;
+            padding:10rpx 10rpx;
         }
+       
     }
 
 }

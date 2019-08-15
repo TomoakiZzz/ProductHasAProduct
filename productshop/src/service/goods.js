@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-13 09:17:35
- * @LastEditTime: 2019-08-13 19:35:51
+ * @LastEditTime: 2019-08-15 18:50:46
  * @LastEditors: Please set LastEditors
  */
 import fly from '../utils/request';
@@ -27,6 +27,11 @@ export let standard= params=>{
 export let related= params=>{
     return fly.post('/api/open/product/coupon/productCouponList/1.0.0', params);
 }
+//切换商品类型
+export let checkType= params=>{
+    return fly.post('/api/open/product/sku/query/1', params);
+}
+
 
 
 

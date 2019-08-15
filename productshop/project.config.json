@@ -19,7 +19,7 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wxd6ede29905a911d5",
+	"appid": "wx3375420e2c184d34",
 	"projectname": "productshop",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -43,6 +43,7 @@
 		},
 		"miniprogram": {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"current": 2,
 =======
 <<<<<<< HEAD
@@ -51,6 +52,9 @@
 			"current": 4,
 >>>>>>> mengyali
 >>>>>>> 6b1147798eb2aca4c69bc396e399910714eb254a
+=======
+			"current": 2,
+>>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
 			"list": [
 				{
 					"id": 0,
@@ -68,6 +72,7 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "专题",
 					"pathName": "pages/specialPage/main",
 					"scene": null
@@ -76,6 +81,11 @@
 					"id": -1,
 					"name": "canvas",
 					"pathName": "pages/canvas/main",
+=======
+					"name": "share",
+					"pathName": "pages/share/main",
+					"query": "",
+>>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
 					"scene": null
 				}
 			]
