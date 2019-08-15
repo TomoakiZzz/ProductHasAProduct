@@ -1,5 +1,6 @@
 {
   "pages": [ 
+    "pages/canvas/main",
     "pages/returnRequest/main",
     "pages/particulars/main",
     "pages/topic/main",
