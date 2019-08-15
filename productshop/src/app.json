@@ -1,10 +1,7 @@
 {
   "pages": [ 
-<<<<<<< HEAD
     "pages/home/main",
-=======
     "pages/canvas/main",
->>>>>>> mengyali
     "pages/returnRequest/main",
     "pages/particulars/main",
     "pages/topic/main",

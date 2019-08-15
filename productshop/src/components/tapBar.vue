@@ -24,11 +24,11 @@ export default {
   computed: {},
   methods: {
     clickcut(cid, index) {
-      console.log(cid, "cid");
+      // console.log(cid, "cid");
       wx.navigateTo({
         url: "/pages/particulars/main?cid=" + cid + "&index=" + index,
         success: function(res) {
-          console.log(res, "res");
+          // console.log(res, "res");
         },
         fail: () => {},
         complete: () => {}
@@ -36,7 +36,7 @@ export default {
     }
   },
   onLoad(options) {
-    console.log(this.topList, "数据");
+    // console.log(this.topList, "数据");
   },
   created() {},
   mounted() {}

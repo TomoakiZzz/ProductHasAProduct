@@ -15,7 +15,7 @@ const mutations={
     },
     //分类接口
     sortInterfaceData(state,payload){
-        console.log(payload,"payload....分类接口")
+        // console.log(payload,"payload....分类接口")
         // console.log(payload.sortType,"payload.sortType")
         state.sortInterfaceData = payload
     },
@@ -39,7 +39,7 @@ const actions = {
     //分类接口
     async sortInterfaces({commit},payload){
         let data = await sortInterface()
-        console.log(data,"分类接口")
+        // console.log(data,"分类接口")
         commit("sortInterfaceData",data.result)
     },
     //按分类查询商品

@@ -178,6 +178,8 @@
     // 3.绘制商品详情
     context.restore();
      context.drawImage(userInfo.avtar, 70, 100, 200, 200, 100, 100, 100);
+     context.setFontSize(18);
+    context.fillText(`商品介绍：吧啦啦啦啦`, 20, 360);
     // 4.绘制二维码
 
     context.draw();
