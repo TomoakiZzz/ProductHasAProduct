@@ -19,7 +19,7 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wxd6ede29905a911d5",
+	"appid": "wx3375420e2c184d34",
 	"projectname": "productshop",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -55,6 +55,14 @@
 					"id": -1,
 					"name": "搜索",
 					"pathName": "pages/search/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "share",
+					"pathName": "pages/share/main",
+					"query": "",
 					"scene": null
 				}
 			]
