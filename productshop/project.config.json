@@ -42,7 +42,15 @@
 			"list": []
 		},
 		"miniprogram": {
+<<<<<<< HEAD
 			"current": 2,
+=======
+<<<<<<< HEAD
+			"current": 1,
+=======
+			"current": 4,
+>>>>>>> mengyali
+>>>>>>> 6b1147798eb2aca4c69bc396e399910714eb254a
 			"list": [
 				{
 					"id": 0,
@@ -62,6 +70,12 @@
 					"id": -1,
 					"name": "专题",
 					"pathName": "pages/specialPage/main",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "canvas",
+					"pathName": "pages/canvas/main",
 					"scene": null
 				}
 			]

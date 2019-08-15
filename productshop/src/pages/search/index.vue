@@ -143,7 +143,9 @@ export default {
       } else if (index !== 2) {
         this.isClickNum = 0;
       }
+     
       this.formData.queryWord = this.inpValue;
+       console.log(this.isClickNum,"isClickNum..........")
       switch (index) {
         case 0:
           this.formData.queryType = 0;

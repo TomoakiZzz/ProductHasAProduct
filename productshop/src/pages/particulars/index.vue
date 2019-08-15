@@ -32,12 +32,12 @@
             :class="[index===BotIndex?'active':'null']"
             @click="changTab(index)"
           >{{item}}</li>
-          <div class="price" @sort="sort">
-            <span>
-              <img
-                :src="BotIndex===2 && flag ? '../../../static/images/priceSortUp.png' : '../../../static/images/priceSortdown.png'"
-                alt
-              />
+          <div class="price">
+            <span v-if="flag">
+              <img src="../../../static/images/priceSortUp.png" alt />
+            </span>
+            <span v-else>
+              <img src="../../../static/images/priceSortDown.png" alt />
             </span>
           </div>
         </ul>
@@ -75,7 +75,8 @@ export default {
       tab: 1,
       flag: true,
       BotIndex: 0,
-      list: ["综合", "最新", "价格"]
+      list: ["综合", "最新", "价格"],
+      flagNum: 0
     };
   },
   components: {
@@ -98,22 +99,6 @@ export default {
     ...mapMutations({
       updateInd: "page/updateInd"
     }),
-    sort() {
-      this.flag = !this.flag;
-      if (this.flag) {
-        console.og(this.flag, ".............");
-        // this.list.sort((a, b) => {
-        //   //从小到大排序
-        //   return a.productVo.salesPrice - b.productVo.salesPrice;
-        // });
-      } else {
-        console.og(this.flag, ".............");
-        // this.list.sort((a, b) => {
-        //   //从小到大排序
-        //   return b.productVo.salesPrice - a.productVo.salesPrice;
-        // });
-      }
-    },
     handTopTab(index) {
       this.updateInd(index);
       this.classifyProducts({
@@ -123,18 +108,48 @@ export default {
       });
     },
     changTab(index) {
-      console.log(index);
-      this.BotIndex = index;
-      if(index===2){
-        this.flag = !this.flag
+      this.classifyProducts({
+        pageIndex: 1,
+        cid: this.sortInterfaceData[this.ind].cid,
+        sortType: this.sortInterfaceData[index].sortId
+      });
+      if (index === 2 && this.flagNum === 0) {
+        this.flag = this.flag;
+        this.flagNum = 1;
+      } else if (index === 2 && this.flagNum === 1) {
+        this.flag = !this.flag;
+        if (this.flag === true) {
+          this.classifyProducts({
+            pageIndex: 1,
+            cid: this.sortInterfaceData[this.ind].cid,
+            sortType: 3
+          });
+        } else {
+          this.classifyProducts({
+            pageIndex: 1,
+            cid: this.sortInterfaceData[this.ind].cid,
+            sortType: 4
+          });
+        }
+      } else if (index != 2) {
+        this.flagNum = 0;
       }
+
+      this.BotIndex = index;
+
+      // this.classifyProducts({
+      //   pageIndex: 1,
+      //   cid: this.sortInterfaceData[this.ind].cid,
+      //   sortType: this.sortInterfaceData[index].sortId
+      // });
+      // console.log(this.classifyProducts(this.flagNum), ".................");
     }
   },
   onLoad(options) {
-    console.log(options, "tab详情跳转后的options");
-    // this.updateInd(options.index - 1);
+    // console.log(this, "tab详情跳转后的options");
+    this.updateInd(options.index - 1);
     this.getCategoryLists();
-    this.classifyProducts({ pageIndex: 1, cid: 1, sortType: 1 });
+    this.classifyProducts({ pageIndex: 1, cid: options.cid, sortType: 1 });
     this.sortInterfaces();
   }
 };
@@ -147,14 +162,22 @@ export default {
 .price {
   width: 50rpx;
   height: 100rpx;
+  // background: red;
   position: absolute;
-  right: 40rpx;
+  z-index: 1000;
   top: 50%;
+  right: 40rpx;
   transform: translateY(-50%);
   span {
+    width: 100%;
+    height: 100%;
+    //  position: absolute;
+    //  transform: translateY(50%);
+
     img {
       width: 100%;
       height: 100%;
+      // margin-top: 20rpx;
       transform: scale(0.4);
     }
   }
