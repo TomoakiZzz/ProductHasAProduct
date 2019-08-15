@@ -3,7 +3,13 @@
     <div class="search">
       <div class="searchInp">
         <img src="../../../static/images/搜索(1).svg" alt>
-        <input v-model="inpValue" type="text" placeholder="搜索" @confirm="searchShop">
+        <input
+          v-model="inpValue"
+          type="text"
+          placeholder="搜索"
+          @confirm="searchShop"
+          @input="valueLength"
+        >
       </div>
       <div class="cancel" @tap="close">取消</div>
     </div>
@@ -20,12 +26,16 @@
     </div>
     <div v-if="!isShow" class="wrapContenter">
       <div class="shopSort">
-        <span v-for="(item,index) in sortList" 
-        :key="item" 
-        :class="{'active':index===ind}"
-        @tap="sortShopList(index)"
+        <span
+          v-for="(item,index) in sortList"
+          :key="item"
+          :class="{'active':index===ind}"
+          @tap="sortShopList(index)"
         >{{item}}</span>
-        <span class="upOrDown"><img src="../../../static/images/sortShopUp.png" alt=""/></span>
+        <span class="upOrDown">
+          <img v-if="isUpOrDown" src="../../../static/images/sortShopUp.png" alt>
+          <img v-else src="../../../static/images/sortShopDown.png">
+        </span>
       </div>
       <div class="shopListCon">
         <div class="shopListItem" v-for="item in searchShopList" :key="item.pid">
@@ -61,7 +71,15 @@ export default {
       isShow: true,
       searchList: [],
       sortList: ["综合", "最新", "价格"],
-      ind: 0
+      ind: 0,
+      isUpOrDown: true,
+      isClickNum: 0,
+      formData: {
+        queryWord: "",
+        queryType: 0,
+        querySort: "asc",
+        pageIndex: 1
+      }
     };
   },
   computed: {
@@ -76,12 +94,8 @@ export default {
     searchShop(e) {
       if (this.inpValue.trim()) {
         this.isShow = false;
-        // this.searchShopData({
-        //   queryWord: this.inpValue.trim(),
-        //   queryType: 0,
-        //   querySort: "asc",
-        //   pageIndex: 1
-        // });
+        this.formData.queryWord = this.inpValue.trim();
+        this.searchShopData(this.formData);
         console.log(
           this.searchList.findIndex(item => item == this.inpValue.trim())
         );
@@ -102,6 +116,13 @@ export default {
     close() {
       // console.log(123)
       this.isShow = true;
+      this.inpValue = "";
+      this.formData = {
+        queryWord: "",
+        queryType: 0,
+        querySort: "asc",
+        pageIndex: 1
+      };
     },
     closeHistory() {
       wx.clearStorage();
@@ -109,17 +130,52 @@ export default {
     },
     searchShoping(item) {
       this.isShow = false;
-      this.searchShopData({
-        queryWord: item,
-        queryType: 0,
-        querySort: "asc",
-        pageIndex: 1
-      });
+      this.inpValue = item;
+      this.formData.queryWord = this.inpValue;
+      this.searchShopData(this.formData);
     },
-    sortShopList(index){
-      console.log(123)
-      this.ind=index;
-      
+    sortShopList(index) {
+      if (index === 2 && this.isClickNum === 0) {
+        this.isUpOrDown = true;
+        this.isClickNum = 1;
+      } else if (index === 2 && this.isClickNum === 1) {
+        this.isUpOrDown = !this.isUpOrDown;
+      } else if (index !== 2) {
+        this.isClickNum = 0;
+      }
+      this.formData.queryWord = this.inpValue;
+      switch (index) {
+        case 0:
+          this.formData.queryType = 0;
+          break;
+        case 1:
+          this.formData.queryType = 1;
+          break;
+        case 2:
+          if (this.isUpOrDown) {
+            this.formData.queryType = 2;
+            this.formData.querySort = "asc";
+          } else {
+            this.formData.queryType = 2;
+            this.formData.querySort = "desc";
+          }
+          break;
+        default:
+          break;
+      }
+      this.searchShopData(this.formData);
+      this.ind = index;
+    },
+    valueLength() {
+      if (!this.inpValue) {
+        this.isShow = true;
+        this.formData = {
+          queryWord: "",
+          queryType: 0,
+          querySort: "asc",
+          pageIndex: 1
+        };
+      }
     }
   },
   onLoad() {
@@ -298,14 +354,14 @@ export default {
   .active {
     color: red;
   }
-  .upOrDown{
+  .upOrDown {
     position: absolute;
-    top:50%;
-    right:60rpx;
+    top: 50%;
+    right: 60rpx;
     transform: translateY(-50%);
     width: 20rpx;
     height: 40rpx;
-    img{
+    img {
       width: 100%;
       height: 100%;
     }
