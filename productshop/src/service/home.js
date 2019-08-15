@@ -17,3 +17,8 @@ export function getCategoryList(params){
 export function getBetterShopData(params){
     return request.post("/api/open/page/home/products/1.0.0",params)
 }
+
+//获取专题数据
+export function getSpecialData(params){
+    return request.post("/api/open/sepcial/query/1.0.0",params)
+}

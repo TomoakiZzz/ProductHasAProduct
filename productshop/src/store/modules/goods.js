@@ -49,6 +49,7 @@ const actions = {
     //获取首页数据
     async getDataFn({commit}, payload){
         let data = await getGoodsData(payload) 
+        console.log(data,'详情页的数据....')
         if(data.res_code === 1){
             commit("updataGoods",data.result)
             let Hint = await hint({sstid:data.result.sstid})

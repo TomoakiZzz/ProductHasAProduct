@@ -6,8 +6,8 @@
     "pages/topic/main",
     "pages/goodsDetail/main",
     "pages/my/main",
-    "pages/search/main"
-   
+    "pages/search/main",
+    "pages/specialPage/main"
    
   ],
   "window": {

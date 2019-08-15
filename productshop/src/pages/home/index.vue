@@ -13,7 +13,7 @@
         :indicator-dots="swiper.indicatorDots"
         :circular="swiper.circular"
       >
-        <swiper-item v-for="item in homeListData[0].items" :key="item.sortId" class="swiper-slider">
+        <swiper-item v-for="item in homeListData[0].items" :key="item.sortId" class="swiper-slider" @tap="goSpecial(item.jumpUrl)">
           <img :src="item.imgUrl" alt>
         </swiper-item>
       </swiper>
@@ -26,7 +26,7 @@
         <div class="classifyItem-title">{{item.title}}</div>
       </div>
     </div>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[2].jumpUrl)">
       <img :src="homeListData[2].pictUrl">
     </div>
     <div class="vipMain">
@@ -38,27 +38,27 @@
         <p>{{item.title}}</p>
       </div>
     </div>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[4].jumpUrl)">
       <img :src="homeListData[4].pictUrl">
     </div>
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[5].items"/>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[6].jumpUrl)">
       <img :src="homeListData[6].pictUrl">
     </div>
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[7].items"/>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[8].jumpUrl)">
       <img :src="homeListData[8].pictUrl">
     </div>
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[9].items"/>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[10].jumpUrl)">
       <img :src="homeListData[10].pictUrl">
     </div>
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[11].items"/>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[12].jumpUrl)">
       <img :src="homeListData[12].pictUrl">
     </div>
     <HomeClassifyTitle/>
@@ -120,6 +120,12 @@ export default {
       wx.navigateTo({
         url: '/pages/search/main'
       });
+    },
+    goSpecial(url){
+      
+      wx.navigateTo({
+        url:"/pages/specialPage/main?"+url.slice(9)
+      })
     }
   },
   onReachBottom() {
