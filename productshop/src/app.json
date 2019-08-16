@@ -1,5 +1,6 @@
 {
   "pages": [ 
+    "pages/myOrder/main",
     "pages/home/main",
     "pages/canvas/main",
     "pages/returnRequest/main",

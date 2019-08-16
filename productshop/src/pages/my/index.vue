@@ -1,8 +1,11 @@
 <template>
   <div class="my-warp">
     <div class="myTop">
+      <img src="../../../static/images/logBg.png" alt="" class="tua">
       <div class="topLeft">
-        <p class="topImg"></p>
+        <p class="topImg">
+          <img src="../../../static/images/234.jpg" alt="" class="tx">
+        </p>
       </div>
       <div class="topRight">
           <p>名字:xxx</p>
@@ -11,7 +14,7 @@
     </div>
     <div class="myBottom">
       <div class="myBottomList">
-        <P class="myOrder">
+        <P class="myOrder" @click="myOrder">
           &nbsp;&nbsp;我的订单
           <span>查看全部订单&nbsp;>&nbsp;&nbsp;</span>
         </P>
@@ -68,11 +71,15 @@ export default {
     }
   },
   methods: {
-    increment() {
-      store.commit("increment");
-    },
-    decrement() {
-      store.commit("decrement");
+    myOrder(){
+      wx.navigateTo({
+        url: '/pages/myOrder/main',
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
     }
   }
 };
@@ -85,25 +92,38 @@ export default {
   border:2rpx solid #000;
   border-radius: 50%;
   margin-left: 15%;
-   transform: translateY(30%); 
+  transform: translateY(30%); 
+  overflow: hidden;
+   .tx{
+     width:100%;
+     height:100%;
+     
+   }
 }
 .my-warp {
   width: 100%;
   height: 100%;
-  background: rgb(217, 231, 231);
+  background: rgb(236, 240, 240);
 }
 .myTop {
   width: 100%;
   height: 300rpx;
   display: flex;
+
+  .tua{
+    width:100%;
+    height: 300rpx;
+    position: absolute;
+  }
   .topLeft{
     flex:3;
-  
+  position: relative;
   }
   .topRight{
     flex:7;
-    margin:60rpx 10rpx;
+    margin:80rpx 10rpx;
     font-size: 34rpx;
+    position: relative;
   }
   
   .myImgone {
@@ -122,11 +142,11 @@ export default {
   position: fixed;
 }
 .myBottomList {
-  height: 300rpx;
+  height: 250rpx;
   border: 2rpx solid #ccc;
   .myOrder {
-    height: 120rpx;
-    line-height: 120rpx;
+    height: 80rpx;
+    line-height: 80rpx;
     span {
       float: right;
       color: rgb(129, 129, 129);
@@ -152,7 +172,7 @@ export default {
 .myNr{
   width:100%;
   height:auto;
-  margin:20rpx 0rpx;
+  // margin:20rpx 0rpx;
   background: #fff;
   ul{
     width:100%;

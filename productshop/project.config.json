@@ -1,5 +1,8 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
@@ -18,13 +21,16 @@
 			"outputPath": ""
 		}
 	},
-	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
+	"libVersion": "2.7.7",
 	"appid": "wx3375420e2c184d34",
 	"projectname": "productshop",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"libVersion": "2.7.7",
+	"miniprogramRoot": "dist/wx/",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -39,58 +45,16 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			"current": 2,
-=======
-<<<<<<< HEAD
-			"current": 1,
-=======
 			"current": 4,
->>>>>>> mengyali
->>>>>>> 6b1147798eb2aca4c69bc396e399910714eb254a
-=======
-			"current": 2,
->>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
-=======
-			"current": 3,
->>>>>>> 806be7e902883556f83c0753fe21ded58318f669
 			"list": [
 				{
-					"id": 0,
-					"name": "首页",
-					"pathName": "pages/goodsDetail/main",
-					"query": "",
-					"scene": null
-				},
-				{
 					"id": -1,
-					"name": "搜索",
-					"pathName": "pages/search/main",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-<<<<<<< HEAD
 					"name": "专题",
-					"pathName": "pages/specialPage/main",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "canvas",
-					"pathName": "pages/canvas/main",
-=======
-					"name": "share",
-					"pathName": "pages/share/main",
+					"pathName": "pages/special/main",
 					"query": "",
->>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
 					"scene": null
 				},
 				{
@@ -98,6 +62,26 @@
 					"name": "首页",
 					"pathName": "pages/home/main",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "5",
+					"pathName": "pages/receivingAddress/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/myOrder/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/main",
 					"scene": null
 				}
 			]
