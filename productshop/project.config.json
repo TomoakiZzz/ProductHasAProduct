@@ -8,6 +8,7 @@
 		"newFeature": true,
 		"coverView": true,
 		"autoAudits": false,
+		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -44,6 +45,7 @@
 		"miniprogram": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"current": 2,
 =======
 <<<<<<< HEAD
@@ -55,11 +57,14 @@
 =======
 			"current": 2,
 >>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
+=======
+			"current": 3,
+>>>>>>> 806be7e902883556f83c0753fe21ded58318f669
 			"list": [
 				{
 					"id": 0,
 					"name": "首页",
-					"pathName": "pages/home/main",
+					"pathName": "pages/goodsDetail/main",
 					"query": "",
 					"scene": null
 				},
@@ -86,6 +91,13 @@
 					"pathName": "pages/share/main",
 					"query": "",
 >>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/home/main",
+					"query": "",
 					"scene": null
 				}
 			]

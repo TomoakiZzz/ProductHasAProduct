@@ -84,7 +84,7 @@
     <addCart v-if="isShow"></addCart>
     <!-- 添加购物车按钮-->
     <div class="goods_footer" v-if="!isShow">
-      <button>分享赚{{goodsItem.earnMoney}}</button>
+      <button @click="share">分享赚{{goodsItem.earnMoney}}</button>
       <button @click="pay">立即购买</button>
     </div>
     <div class="goods_footer" v-if="isShow">

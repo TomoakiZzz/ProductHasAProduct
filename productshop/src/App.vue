@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-13 19:57:53
- * @LastEditTime: 2019-08-15 11:13:01
+ * @LastEditTime: 2019-08-15 21:13:36
  * @LastEditors: Please set LastEditors
  -->
 <script>
@@ -18,7 +18,6 @@ export default {
      * 百度：mpvue === swan, mpvuePlatform === 'swan'
      * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
      */
-    
      wx.login({
       success: async (res)=>{
         if (res.code) {
@@ -28,27 +27,14 @@ export default {
               console.log(phone) 
             }
           })
-          console.log(2222)
-           let data = await Login({code: res.code, platform: phone.model});
-          console.log(data)
-          
+          // console.log(2222)
+          //  let data = await Login({code: res.code, platform: phone.model});
+          // console.log(data)
         }
       }
     })
 
-    let logs;
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync({
-        key: 'logs',
-        data: logs
-      })
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync('logs', logs)
-    }
+    
   },
   log () {
     console.log(`log at:${Date.now()}`)
