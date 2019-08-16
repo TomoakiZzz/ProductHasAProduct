@@ -44,7 +44,11 @@
       </div>
       <div class="particulBottom">
         <div class="bottomNr">
-          <div class="nr" v-for="(ite,index) in classifyProductData" :key="index">
+          <div class="nr" 
+          v-for="(ite,index) in classifyProductData" 
+          :key="index"
+          @click="commodity(ite.pid)"
+          >
             <p class="nrTop">
               <img :src="ite.mainImgUrl" alt class="particulars_img" />
             </p>
@@ -99,6 +103,16 @@ export default {
     ...mapMutations({
       updateInd: "page/updateInd"
     }),
+    commodity(id){
+      wx.navigateTo({
+        url: '/pages/goodsDetail/main?id='+id,
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    },
     handTopTab(index) {
       this.updateInd(index);
       this.classifyProducts({
@@ -136,13 +150,6 @@ export default {
       }
 
       this.BotIndex = index;
-
-      // this.classifyProducts({
-      //   pageIndex: 1,
-      //   cid: this.sortInterfaceData[this.ind].cid,
-      //   sortType: this.sortInterfaceData[index].sortId
-      // });
-      // console.log(this.classifyProducts(this.flagNum), ".................");
     }
   },
   onLoad(options) {

@@ -21,7 +21,7 @@ const mutations={
     },
     //按分类查询商品
     classifyProductData(state,payload){
-        // console.log(payload,"payload....按分类查询商品")
+        console.log(payload,"payload....按分类查询商品")
         state.classifyProductData = payload
     },
     //更新下标
