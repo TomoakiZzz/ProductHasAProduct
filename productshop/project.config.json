@@ -33,6 +33,7 @@
 	"scripts": {},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"libVersion": "2.7.7",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -50,7 +51,27 @@
 			"list": []
 		},
 		"miniprogram": {
+<<<<<<< HEAD
 			"current": 7,
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"current": 2,
+=======
+<<<<<<< HEAD
+			"current": 1,
+=======
+			"current": 4,
+>>>>>>> mengyali
+>>>>>>> 6b1147798eb2aca4c69bc396e399910714eb254a
+=======
+			"current": 2,
+>>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
+=======
+			"current": 3,
+>>>>>>> 806be7e902883556f83c0753fe21ded58318f669
+>>>>>>> cbd7398646e46ca13ca1148a33f9a6eea7b86489
 			"list": [
 				{
 					"id": -1,
@@ -62,14 +83,48 @@
 				{
 					"id": 1,
 					"name": "首页",
+<<<<<<< HEAD
 					"pathName": "pages/home/main",
+=======
+					"pathName": "pages/goodsDetail/main",
+>>>>>>> cbd7398646e46ca13ca1148a33f9a6eea7b86489
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "商品详情",
 					"pathName": "pages/goodsDetail/main",
+=======
+					"name": "搜索",
+					"pathName": "pages/search/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+<<<<<<< HEAD
+					"name": "专题",
+					"pathName": "pages/specialPage/main",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "canvas",
+					"pathName": "pages/canvas/main",
+=======
+					"name": "share",
+					"pathName": "pages/share/main",
+					"query": "",
+>>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/home/main",
+>>>>>>> cbd7398646e46ca13ca1148a33f9a6eea7b86489
 					"query": "",
 					"scene": null
 				},

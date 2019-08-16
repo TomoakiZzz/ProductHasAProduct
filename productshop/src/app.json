@@ -1,6 +1,8 @@
 {
   "pages": [ 
     "pages/home/main",
+    "pages/canvas/main",
+    "pages/returnRequest/main",
     "pages/particulars/main",
     "pages/topic/main",
     "pages/my/main",
@@ -8,7 +10,12 @@
     "pages/goodsDetail/main",
     "pages/certification/main",
     "pages/receivingAddress/main",
-    "pages/receiverAddress/main"
+    "pages/receiverAddress/main",
+    "pages/search/main",
+    "pages/specialPage/main",
+    "pages/share/main",
+    "pages/bindingTel/main",
+    "pages/order/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,7 +35,7 @@
       "iconPath": "static/tabs/home.png",
       "selectedIconPath": "static/tabs/home-active.png"
     }, {
-      "text": "订单",
+      "text": "购物车",
       "pagePath": "pages/topic/main",
       "iconPath": "static/tabs/orders.png",
       "selectedIconPath": "static/tabs/orders-active.png"
@@ -40,6 +47,8 @@
     }]
   }
 }
+
+
 
 
 

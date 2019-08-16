@@ -1,4 +1,4 @@
-import { getHomeData, getCategoryList, getBetterShopData } from "../../service/index"
+import { getHomeData, getCategoryList, getBetterShopData,getSpecialData } from "../../service/index"
 const state = {
     //首页数据
     homeListData: [],
@@ -13,7 +13,9 @@ const state = {
     //判断数据还有没有
     hasMore: true,
     //topTap的参数
-    parentId: 0
+    parentId: 0,
+    //专题页面的数据
+    specialData:{}
 }
 const mutations = {
     //首页分配数据
@@ -38,6 +40,9 @@ const mutations = {
         // console.log(payload,"*******")
         state.topTabList = [...state.topTabList,...payload]
     },
+    getSpecialResult(state,payload){
+        state.specialData=payload
+    }
 }
 const actions = {
     //获取首页的数据
@@ -49,7 +54,7 @@ const actions = {
     },
     async getCategoryListData({ commit, state }, payload) {
         let data = await getCategoryList({ parentId: state.parentId })
-        console.log(data)
+        // console.log(data)
         commit("updateTopTabList", data.result)
     },
     async getBetterShopList({ commit, state }, payload) {
@@ -61,6 +66,11 @@ const actions = {
             commit("updateLocation", { betterShopList: [...state.betterShopList, ...data.result] })
         }
 
+    },
+    async getSpecial({commit},payload){
+        let data = await getSpecialData(payload)
+        console.log(data)
+        commit("getSpecialResult",data.result)
     }
 }
 export default {

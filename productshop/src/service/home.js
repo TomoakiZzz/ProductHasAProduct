@@ -5,10 +5,15 @@ export function getHomeData(){
     return request.post("/api/open/page/home/list/1.0.0")
 }
 //首页tab
+// export function getCategoryList(params){
+//     // console.log(params)
+//     return request.post("/api/open/product/category/sub/1",params)
+// }
 export function getCategoryList(params){
     // console.log(params)
-    return request.post("/api/open/product/category/sub/1",params)
+    return request.post("/api/open/product/category/query/1.0.0")
 }
+
 //上拉加载的数据
 export function getBetterShopData(params){
     return request.post("/api/open/page/home/products/1.0.0",params)
@@ -28,3 +33,9 @@ export function getSpecialData(params) {
 export function getDetail(params){
     return request.post('/api/open/product/coupon/productCouponList/1.0.0',params);
 }
+
+// //获取专题数据
+// export function getSpecialData(params){
+//     return request.post("/api/open/sepcial/query/1.0.0",params)
+// }
+

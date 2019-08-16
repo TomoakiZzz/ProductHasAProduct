@@ -1,6 +1,11 @@
 <template>
   <div class="tapBar">
-    <div :class="{'active':ind===index}" v-for="(item,index) in topList" :key="item.cname">{{item.cname}}</div>
+    <div
+      :class="{'active':ind===index}"
+      v-for="(item,index) in topList"
+      :key="item.cid"
+      @click="clickcut(item.cid,index)"
+    >{{item.cname}}</div>
   </div>
 </template>
 <script>
@@ -13,37 +18,33 @@ export default {
   components: {},
   data() {
     return {
-      ind:0
-
+      ind: 0
     };
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {
-    clickcut() {
+    clickcut(cid, index) {
+      // console.log(cid, "cid");
       wx.navigateTo({
-        url: "/pages/particulars/main",
-        success: result => {},
+        url: "/pages/particulars/main?cid=" + cid + "&index=" + index,
+        success: function(res) {
+          // console.log(res, "res");
+        },
         fail: () => {},
         complete: () => {}
       });
     }
   },
-  onLoad(options){
-    console.log(options)
+  onLoad(options) {
+    // console.log(this.topList, "数据");
   },
-  created(){
-
-  },
-  mounted(){
-
-  }
-}
+  created() {},
+  mounted() {}
+};
 </script>
 <style scoped lang="scss">
 .tapBar {
-  // width: 100%;
+  width: 100%;
   display: flex;
   white-space: nowrap;
   height: 100rpx;

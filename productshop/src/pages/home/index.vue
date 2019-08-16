@@ -1,7 +1,14 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-15 09:04:04
+ * @LastEditTime: 2019-08-15 23:25:00
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
   <div class="wrap-init" v-if="homeListData && homeListData[0]">
     <div class="search">
-      <div>
+      <div @tap="goToSearch">
         <img src="../../../static/images/搜索(1).svg" alt>搜索
       </div>
     </div>
@@ -13,8 +20,12 @@
         :indicator-dots="swiper.indicatorDots"
         :circular="swiper.circular"
       >
-        <swiper-item v-for="item in homeListData[0].items" :key="item.sortId" class="swiper-slider"
-        @click="clickSwiper(item)">
+        <swiper-item
+          v-for="item in homeListData[0].items"
+          :key="item.sortId"
+          class="swiper-slider"
+          @tap="goSpecial(item.jumpUrl)"
+        >
           <img :src="item.imgUrl" alt>
         </swiper-item>
       </swiper>
@@ -27,7 +38,7 @@
         <div class="classifyItem-title">{{item.title}}</div>
       </div>
     </div>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[2].jumpUrl)">
       <img :src="homeListData[2].pictUrl">
     </div>
     <div class="vipMain">
@@ -39,27 +50,27 @@
         <p>{{item.title}}</p>
       </div>
     </div>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[4].jumpUrl)">
       <img :src="homeListData[4].pictUrl">
     </div>
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[5].items"/>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[6].jumpUrl)">
       <img :src="homeListData[6].pictUrl">
     </div>
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[7].items"/>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[8].jumpUrl)">
       <img :src="homeListData[8].pictUrl">
     </div>
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[9].items"/>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[10].jumpUrl)">
       <img :src="homeListData[10].pictUrl">
     </div>
     <HomeClassifyTitle/>
     <HomeChoiceness :choicenessList="homeListData[11].items"/>
-    <div class="banImg">
+    <div class="banImg" @tap="goSpecial(homeListData[12].jumpUrl)">
       <img :src="homeListData[12].pictUrl">
     </div>
     <HomeClassifyTitle/>
@@ -72,6 +83,12 @@
       class="hintMsg"
       v-if="betterShopList && betterShopList.length>=20"
     >{{hasMore ? '上拉加载更多...' : '没有更多数据了'}}</div>
+    <button
+      open-type="getUserInfo"
+      @getuserinfo="getUserInfo"
+      v-if="userInfoFlag"
+      class="userBtn"
+    >获取用户信息</button>
   </div>
 </template>
 <script>
@@ -95,7 +112,8 @@ export default {
         interval: 2000,
         indicatorDots: true,
         circular: true
-      }
+      },
+      userInfoFlag: false //用来控制获取用户信息按钮
     };
   },
   computed: {
@@ -117,18 +135,60 @@ export default {
     ...mapMutations({
       updateLocation: "home/updateLocation"
     }),
-    // 跳转到专题页
-    clickSwiper(item){
-      console.logg(item)
-      // wx.navigateTo({
-      //   url:`/pages/special/main${}`  
-      // })
-
-    //   goToDetail(item){
-    //   let id=item.jumpUrl.split("product")[1].split("&")[1].split("=")[1]
-    //   //跳转详情
-    //   wx.navigateTo({url:`/pages/goodsDetail/main?id=`+id})
-    // }
+    goToSearch() {
+      wx.navigateTo({
+        url: "/pages/search/main"
+      });
+    },
+    goSpecial(url) {
+      wx.navigateTo({
+        url: "/pages/specialPage/main?" + url.slice(9)
+      });
+    },
+    // //获取用户信息
+    getUserInfo(e) {
+      let that = this;
+      console.log("info...e...", e);
+      if (e.target.errMsg != "getUserInfo:fail auth deny") {
+        // this.saveUserInfo()
+        that.userInfoFlag = false;
+        wx.showToast({
+          title: "获取信息成功",
+          success() {
+            wx.setStorage({
+              key: "user",
+              data: JSON.parse(e.mp.detail.rawData)
+            });
+          }
+        });
+      } else {
+        wx.showModal({
+          title: "亲爱的用户", //提示的标题,
+          content: "同意我们的授权，让我们为您提供更加优质的服务", //提示的内容,
+          showCancel: false, //是否显示取消按钮,
+          confirmText: "去设置",
+          confirmColor: "#3CC51F", //确定按钮的文字颜色
+          success: res => {
+            wx.openSetting({
+              success: () => {
+                that.getSetting();
+              }
+            });
+          }
+        });
+      }
+    },
+    getSetting() {
+      let that = this;
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting["scope.userInfo"]) {
+            that.userInfoFlag = false;
+          } else {
+            that.userInfoFlag = true;
+          }
+        }
+      });
     }
   },
   onReachBottom() {
@@ -148,6 +208,8 @@ export default {
     this.getHomeListData();
     this.getBetterShopList();
     this.getCategoryListData();
+    // 查看是否授权
+    this.getSetting();
   },
   mounted() {}
 };
@@ -156,8 +218,6 @@ export default {
 .wrap-init {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
   .search {
     padding: 0 20rpx;
     width: 100%;
@@ -277,5 +337,14 @@ export default {
   line-height: 80rpx;
   color: #858585;
   font-size: 28rpx;
+}
+.userBtn {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  opacity: 0;
 }
 </style>
