@@ -150,13 +150,6 @@ export default {
       }
 
       this.BotIndex = index;
-
-      // this.classifyProducts({
-      //   pageIndex: 1,
-      //   cid: this.sortInterfaceData[this.ind].cid,
-      //   sortType: this.sortInterfaceData[index].sortId
-      // });
-      // console.log(this.classifyProducts(this.flagNum), ".................");
     }
   },
   onLoad(options) {

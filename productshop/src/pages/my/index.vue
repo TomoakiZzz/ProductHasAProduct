@@ -1,9 +1,13 @@
 <template>
   <div class="my-warp">
     <div class="myTop">
-      <p>
-
-      </p>
+      <div class="topLeft">
+        <p class="topImg"></p>
+      </div>
+      <div class="topRight">
+          <p>名字:xxx</p>
+          <p>邀请码:D752ARE</p>
+      </div>
     </div>
     <div class="myBottom">
       <div class="myBottomList">
@@ -75,15 +79,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.topImg{
+  width:150rpx;
+  height: 150rpx;
+  border:2rpx solid #000;
+  border-radius: 50%;
+  margin-left: 15%;
+   transform: translateY(30%); 
+}
 .my-warp {
   width: 100%;
   height: 100%;
-  background: rgb(179, 219, 219);
+  background: rgb(217, 231, 231);
 }
 .myTop {
   width: 100%;
   height: 300rpx;
+  display: flex;
+  .topLeft{
+    flex:3;
   
+  }
+  .topRight{
+    flex:7;
+    margin:60rpx 10rpx;
+    font-size: 34rpx;
+  }
   
   .myImgone {
     width: 100%;
