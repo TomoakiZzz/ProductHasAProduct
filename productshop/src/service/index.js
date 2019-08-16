@@ -8,6 +8,7 @@
 export * from "./home"
 export * from "./page"
 export * from "./goods"
+export * from './receiverAddress'
 export * from "./search"
 export * from "./user"
 export * from "./shopCart"

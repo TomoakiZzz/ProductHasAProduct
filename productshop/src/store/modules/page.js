@@ -21,7 +21,7 @@ const mutations={
     },
     //按分类查询商品
     classifyProductData(state,payload){
-        // console.log(payload,"payload....按分类查询商品")
+        console.log(payload,"payload....按分类查询商品")
         state.classifyProductData = payload
     },
     //更新下标
@@ -49,7 +49,7 @@ const actions = {
         commit("classifyProductData",data.result)
     }
 }
-export default{
+export default {
     namespaced: true,
     state,
     mutations,

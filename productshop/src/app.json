@@ -5,8 +5,12 @@
     "pages/returnRequest/main",
     "pages/particulars/main",
     "pages/topic/main",
-    "pages/goodsDetail/main",
     "pages/my/main",
+    "pages/special/main",   
+    "pages/goodsDetail/main",
+    "pages/certification/main",
+    "pages/receivingAddress/main",
+    "pages/receiverAddress/main",
     "pages/search/main",
     "pages/specialPage/main",
     "pages/share/main",
@@ -43,3 +47,8 @@
     }]
   }
 }
+
+
+
+
+
