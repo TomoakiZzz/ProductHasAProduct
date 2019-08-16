@@ -7,7 +7,8 @@
     "pages/special/main",   
     "pages/goodsDetail/main",
     "pages/certification/main",
-    "pages/receivingAddress/main"
+    "pages/receivingAddress/main",
+    "pages/receiverAddress/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

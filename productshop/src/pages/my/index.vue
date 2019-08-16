@@ -1,9 +1,7 @@
 <template>
   <div class="my-warp">
     <div class="myTop">
-      <p>
-
-      </p>
+      <p></p>
     </div>
     <div class="myBottom">
       <div class="myBottomList">
@@ -40,14 +38,37 @@
       </div>
       <div class="myNr">
         <ul>
-          <li><img src="../../../static/images/zanwu.png" alt="" class="zw">&nbsp;我的优惠券<span><img src="../../../static/images/jt.png" alt="" class="right"></span></li>
-          <li><img src="../../../static/images/zanwu.png" alt="" class="zw">&nbsp;关于我们<span><img src="../../../static/images/jt.png" alt="" class="right"></span></li>
-          <li><img src="../../../static/images/zanwu.png" alt="" class="zw">&nbsp;我的分享<span><img src="../../../static/images/jt.png" alt="" class="right"></span></li>
-          <li><img src="../../../static/images/zanwu.png" alt="" class="zw">&nbsp;联系客服<span><img src="../../../static/images/jt.png" alt="" class="right"></span></li>
-          <li><img src="../../../static/images/zanwu.png" alt="" class="zw">&nbsp;设置<span><img src="../../../static/images/jt.png" alt="" class="right"></span></li>
-          
+          <li>
+            <img src="../../../static/images/zanwu.png" alt class="zw" />&nbsp;我的优惠券
+            <span>
+              <img src="../../../static/images/jt.png" alt class="right" />
+            </span>
+          </li>
+          <li @click="clickAddress">
+            <img src="../../../static/images/zanwu.png" alt class="zw" />&nbsp;收货地址
+            <span>
+              <img src="../../../static/images/jt.png" alt class="right" />
+            </span>
+          </li>
+          <li>
+            <img src="../../../static/images/zanwu.png" alt class="zw" />&nbsp;我的分享
+            <span>
+              <img src="../../../static/images/jt.png" alt class="right" />
+            </span>
+          </li>
+          <li>
+            <img src="../../../static/images/zanwu.png" alt class="zw" />&nbsp;联系客服
+            <span>
+              <img src="../../../static/images/jt.png" alt class="right" />
+            </span>
+          </li>
+          <li>
+            <img src="../../../static/images/zanwu.png" alt class="zw" />&nbsp;设置
+            <span>
+              <img src="../../../static/images/jt.png" alt class="right" />
+            </span>
+          </li>
         </ul>
-
       </div>
     </div>
   </div>
@@ -69,6 +90,11 @@ export default {
     },
     decrement() {
       store.commit("decrement");
+    },
+    clickAddress() {
+      wx.navigateTo({
+        url: "/pages/receivingAddress/main"
+      });
     }
   }
 };
@@ -83,8 +109,7 @@ export default {
 .myTop {
   width: 100%;
   height: 300rpx;
-  
-  
+
   .myImgone {
     width: 100%;
     height: 100%;
@@ -126,32 +151,31 @@ export default {
       }
     }
   }
-  
 }
-.myNr{
-  width:100%;
-  height:auto;
-  margin:20rpx 0rpx;
+.myNr {
+  width: 100%;
+  height: auto;
+  margin: 20rpx 0rpx;
   background: #fff;
-  ul{
-    width:100%;
-    height:100%;
-    li{
-      height:80rpx;
+  ul {
+    width: 100%;
+    height: 100%;
+    li {
+      height: 80rpx;
       line-height: 80rpx;
       font-size: 26rpx;
-      border-bottom:2rpx solid #ccc;
-      span{
+      border-bottom: 2rpx solid #ccc;
+      span {
         float: right;
         margin-right: 20rpx;
       }
     }
   }
-  .right{
+  .right {
     width: 30rpx;
     height: 30rpx;
   }
-  .zw{
+  .zw {
     width: 35rpx;
     height: 35rpx;
   }

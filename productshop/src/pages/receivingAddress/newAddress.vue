@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="btn">
       <button @click="clickNewAress">新增收货地址</button>
     </div>
 </template>
@@ -22,7 +22,7 @@ export default {
     methods:{
         clickNewAress(){
              wx.navigateTo({
-                 url:'/pages/goodsDetail/main'
+                 url: "/pages/receiverAddress/main"
             })
         }
     },
@@ -34,6 +34,18 @@ export default {
     }
 }
 </script>
-<style scoped lang="">
-
+<style scoped lang="scss">
+ .btn{
+     width: 100%;
+     height: 100%;
+     background: #f3f7f7;
+     padding-top:100rpx;
+     button{
+        //  margin-top:200rpx;
+         width: 95%;
+         font-size: 36rpx;
+         background: cyan;
+         color:#fff;
+     }
+ }
 </style>

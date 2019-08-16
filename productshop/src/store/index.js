@@ -14,6 +14,7 @@ import home from './modules/home';
 import special from './modules/special'
 import page from "./modules/page";
 import goods from "./modules/goods";
+import receiverAddress from "./modules/receiverAddress";
 
 Vue.use(Vuex);
 
@@ -23,7 +24,8 @@ export default new Vuex.Store({
     home,
     special,
     page,
-    goods
+    goods,
+    receiverAddress
   },
   plugins: [CreateLogger()]
 })
