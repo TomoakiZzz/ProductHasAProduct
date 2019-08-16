@@ -2,14 +2,14 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-14 19:39:44
- * @LastEditTime: 2019-08-15 18:44:30
+ * @LastEditTime: 2019-08-16 14:26:57
  * @LastEditors: Please set LastEditors
  -->
 <template>
   <div class="order_detail">
     <p class="time">111111111111111111111111</p>
     <div class="product_detail">
-      <img src="../../static/images/Group 2.svg" alt />
+      <img src="../../static/images/" alt />
       <div class="product_des">
         <p class="product_title">我就死按大家开始的萨克雷达</p>
         <p class="product_standard">规格：xl</p>

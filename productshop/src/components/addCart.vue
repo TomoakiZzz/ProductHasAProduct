@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-13 21:28:06
- * @LastEditTime: 2019-08-15 18:43:37
+ * @LastEditTime: 2019-08-16 11:51:32
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -74,7 +74,8 @@ export default {
             hide: "goods/updateModual",
             addCartFn: 'goods/addCartFn',
             clear: 'goods/clear', // 清除type
-            updateCheck: 'goods/updateCheck'//选择类型后更新类型
+            updateCheck: 'goods/updateCheck',//选择类型后更新类型
+            clear: 'goods/clear'
         }),
         //关闭弹框
         close(flag){
@@ -85,7 +86,6 @@ export default {
             }else{
                 this.updateCheck(this.standardInfo[0].attributeValueRelationVoList[0].vname)
             }
-          
         },
         //切换样式
         check(ind,type){
@@ -106,6 +106,10 @@ export default {
     },
     mounted(){
 
+    },
+    onUnload(){
+      this.hide(false)
+      this.clear()
     }
 }
 </script>

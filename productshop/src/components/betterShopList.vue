@@ -1,5 +1,12 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-15 09:04:04
+ * @LastEditTime: 2019-08-16 14:30:06
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
-  <div class="betterList">
+  <div class="betterList" @click="goToDetail()">
     <div class="shopPic">
       <img :src="Item.mainImgUrl" alt>
     </div>
@@ -33,7 +40,17 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+     goToDetail(){
+       console.log(111)
+      //  let arr = this.Item.jumpUrl.split("&")
+      //  let newArr=arr.map(item=>{
+      //    return item.split("=")
+      //  })
+      // // //跳转详情
+      // wx.navigateTo({url:`/pages/goodsDetail/main?id=`+Object.fromEntries(newArr).businessId})
+    }
+  },
   created() {},
   mounted() {}
 };

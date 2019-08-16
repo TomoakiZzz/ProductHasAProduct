@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-15 09:15:23
- * @LastEditTime: 2019-08-16 07:54:45
+ * @LastEditTime: 2019-08-16 11:46:01
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -134,7 +134,7 @@ export default {
     ctx.restore();
     // 绘制商品大图和标题
     ctx.save();
-     ctx.setFontSize(12);
+     ctx.setFontSize(16);
      let row = 0, pos = 0;
       for (let i=0; i<this.goodsItem.title.length; i++){
         let str = this.goodsItem.title.slice(pos, i);
@@ -169,7 +169,6 @@ export default {
             wx.canvasToTempFilePath({
               x: 0,
               y: 0,
-             
               canvasId: 'shareFrends',
               quality: 1,
               fileType: 'jpg',
@@ -204,7 +203,7 @@ export default {
       ctx.setFontSize(10);
       ctx.setFillStyle('#999');
       // info.result.marketPrice = '88888.888888';
-      ctx.fillText(`￥${this.goodsItem.marketPrice}`, 155-ctx.measureText(`￥${this.goodsItem.marketPrice}`).width, 450);
+      ctx.fillText(`￥${this.goodsItem.marketPrice}`, 70+ctx.measureText(`￥${this.goodsItem.marketPrice}`).width, 450);
       ctx.restore();
       ctx.draw();
    

@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-12 21:06:43
- * @LastEditTime: 2019-08-15 19:09:22
+ * @LastEditTime: 2019-08-16 09:26:25
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -113,6 +113,7 @@ export default {
     };
   },
   onLoad(options) {
+    console.log(this.isShow,'isShow')
     this.id=options.id
     this.getDataFn({ pid: Number(options.id) }); //获取详情
     this.check({ pid: Number(options.id) }); //
@@ -162,7 +163,9 @@ export default {
          this.addShop({orderChannel:this.Type.commissionAmount, skuPidNums: `[{"pid":${this.Type.pid},"buyNum":${this.num},"skuKey":${this.Type.skuKey}}]`})
           // this.addShop({orderChannel:4, skuPidNums: '[{"pid":70563,"buyNum":1,"skuKey":"e29ffec7aa4bfa25f41bdb336c204873"}]'})
       }
-     
+    },
+    onUnload(){
+      this.show(false)
     }
   },
   created() {},

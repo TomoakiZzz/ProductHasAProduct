@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-13 19:57:53
- * @LastEditTime: 2019-08-13 21:22:08
+ * @LastEditTime: 2019-08-16 12:06:09
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -29,10 +29,13 @@ export default {
   },
   computed: {},
   methods: {
-    goToDetail(item){
-      let id=item.jumpUrl.split("product")[1].split("&")[1].split("=")[1]
-      //跳转详情
-      wx.navigateTo({url:`/pages/goodsDetail/main?id=`+id})
+     goToDetail(){
+       let arr = this.Item.jumpUrl.split("&")
+       let newArr=arr.map(item=>{
+         return item.split("=")
+       })
+      // //跳转详情
+      wx.navigateTo({url:`/pages/goodsDetail/main?id=`+Object.fromEntries(newArr).businessId})
     }
   },
   created() {},

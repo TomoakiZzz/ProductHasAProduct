@@ -11,7 +11,8 @@
     "pages/specialPage/main",
     "pages/share/main",
     "pages/bindingTel/main",
-    "pages/order/main"
+    "pages/order/main",
+    "pages/referrer/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
