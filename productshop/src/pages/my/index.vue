@@ -1,9 +1,6 @@
 <template>
   <div class="my-warp">
     <div class="myTop">
-<<<<<<< HEAD
-      <p></p>
-=======
       <div class="topLeft">
         <p class="topImg"></p>
       </div>
@@ -11,7 +8,6 @@
           <p>名字:xxx</p>
           <p>邀请码:D752ARE</p>
       </div>
->>>>>>> mengyali
     </div>
     <div class="myBottom">
       <div class="myBottomList">
@@ -127,9 +123,6 @@ export default {
 .myTop {
   width: 100%;
   height: 300rpx;
-<<<<<<< HEAD
-
-=======
   display: flex;
   .topLeft{
     flex:3;
@@ -141,7 +134,6 @@ export default {
     font-size: 34rpx;
   }
   
->>>>>>> mengyali
   .myImgone {
     width: 100%;
     height: 100%;
