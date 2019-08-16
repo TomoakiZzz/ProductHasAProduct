@@ -114,6 +114,7 @@ export default {
     }
   },
   mounted() {
+    
     let that = this;
     //绘图上下文
     let ctx = wx.createCanvasContext("shareFrends");
@@ -121,16 +122,22 @@ export default {
     //绘制头像
     // 绘制用户名和头像
     ctx.save();
-    // ctx.arc(34, 47, 20, 0, 2 * Math.PI);
-    // ctx.fillStyle = "#fff";
-    // ctx.clip();
+    // ctx.fillStyle = "red";
     // ctx.fill();
-    ctx.drawImage(this.userInfo.avatarUrl, 0, 0, 120, 120, 15, 30, 40, 40);
-    ctx.save();
+    wx.getImageInfo({
+      src:this.userInfo.avatarUrl,
+      complete:res=>{
+        ctx.arc(35, 50, 20, 0, 2 * Math.PI);
+        ctx.clip();
+        ctx.drawImage(this.userInfo.avatarUrl, 0, 0, res.width, res.height, 15, 30, 40, 40);
+      }
+    })
+    ctx.restore(); 
+     // ctx.save();
     ctx.setFontSize(12);
     ctx.fillText(`${this.userInfo.nickName}分享给你一个商品`, 67, 40);
     ctx.fillText(`邀请码: dasbdabdbaj`, 67, 60);
-    ctx.restore();
+    
     // 绘制商品大图和标题
     ctx.save();
     ctx.setFontSize(12);

@@ -43,28 +43,12 @@
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			"current": 2,
-=======
-<<<<<<< HEAD
-			"current": 1,
-=======
-			"current": 4,
->>>>>>> mengyali
->>>>>>> 6b1147798eb2aca4c69bc396e399910714eb254a
-=======
-			"current": 2,
->>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
-=======
 			"current": 3,
->>>>>>> 806be7e902883556f83c0753fe21ded58318f669
 			"list": [
 				{
 					"id": 0,
 					"name": "首页",
-					"pathName": "pages/goodsDetail/main",
+					"pathName": "pages/home/main",
 					"query": "",
 					"scene": null
 				},
@@ -77,27 +61,15 @@
 				},
 				{
 					"id": -1,
-<<<<<<< HEAD
 					"name": "专题",
 					"pathName": "pages/specialPage/main",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "canvas",
+					"name": "pages/canvas/main",
 					"pathName": "pages/canvas/main",
-=======
-					"name": "share",
-					"pathName": "pages/share/main",
-					"query": "",
->>>>>>> d823ca09276261cf37057d377c34d4c67372c1d8
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "首页",
-					"pathName": "pages/home/main",
-					"query": "",
 					"scene": null
 				}
 			]
